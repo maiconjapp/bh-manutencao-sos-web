@@ -12,9 +12,6 @@ const Services: React.FC = () => {
       title: "Encanador 24h",
       icon: <Wrench className="w-12 h-12 text-secondary" />,
       imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg",
-      additionalImages: [
-        "https://i.ibb.co/35sv2mXh/Profissional-da-S-O-S-Manuten-es-BH-desentupindo-pia-de-cozinha-em-uma-resid-ncia-de-Belo-Horizonte.jpg"
-      ],
       services: [
         "Conserto de vazamentos",
         "Troca de torneiras e registros",
@@ -30,9 +27,6 @@ const Services: React.FC = () => {
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
       imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg",
-      additionalImages: [
-        "https://i.ibb.co/zhXr5w5p/quot-Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
-      ],
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
@@ -104,23 +98,6 @@ const Services: React.FC = () => {
                           aspectRatio={4/3}
                           className="w-full h-full object-cover"
                         />
-                      </div>
-                    )}
-                    
-                    {category.additionalImages && category.additionalImages.length > 0 && (
-                      <div className="w-full md:w-1/3 grid grid-cols-1 gap-4">
-                        {category.additionalImages.map((img, index) => (
-                          <div key={index} className="h-32 rounded-lg overflow-hidden shadow-lg">
-                            <OptimizedImage 
-                              src={img} 
-                              alt={`${category.title} additional image ${index + 1}`}
-                              width={300}
-                              height={200}
-                              aspectRatio={3/2}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ))}
                       </div>
                     )}
                     
