@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -13,7 +12,6 @@ const ServiceIcon: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </div>
 );
 
-// Corrigir URLs de imagem - removendo caracteres extras que podem estar causando problemas
 const services = [
   {
     title: "Conserto Hidráulico",
@@ -35,7 +33,7 @@ const services = [
       </ServiceIcon>
     ),
     link: "/servicos#desentupimento",
-    imageUrl: "https://i.ibb.co/Z6BVJCJ/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
+    imageUrl: "https://i.ibb.co/1YnM1GV2/Profissional-da-S-O-S-Manuten-es-BH-desentupindo-pia-de-cozinha-em-uma-resid-ncia-de-Belo-Horizonte.jpg"
   },
   {
     title: "Serviços Elétricos",
