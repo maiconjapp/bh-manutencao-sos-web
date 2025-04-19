@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -279,7 +280,7 @@ const Services: React.FC = () => {
               </div>
               <div className="md:w-1/2">
                 <OptimizedImage 
-                  src="https://i.ibb.co/67nYhLsw/S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-BH.jpg"
+                  src="https://i.ibb.co/MrTMmZk/1000521259.jpg"
                   alt="Materiais disponíveis"
                   width={480}
                   height={360}
