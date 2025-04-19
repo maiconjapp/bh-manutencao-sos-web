@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface HeroSectionProps {
@@ -18,11 +17,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <div className="relative">
-      {/* Background image with darker overlay */}
+      {/* Background image with reduced opacity overlay */}
       <div 
-        className="absolute inset-0 bg-black/70 z-0"
+        className="absolute inset-0 z-0"
         style={{ 
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`, 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`, 
           backgroundSize: 'cover', 
           backgroundPosition: 'center' 
         }}
@@ -64,4 +63,3 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
-
