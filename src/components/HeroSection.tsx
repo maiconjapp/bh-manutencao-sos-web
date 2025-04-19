@@ -14,13 +14,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   subtitle,
   ctaText,
   ctaLink,
-  backgroundImage
+  backgroundImage = "https://i.ibb.co/jkqdHsnX/Conhe-a-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-BH-Empresa-especializada-em-servi-os-h.jpg"
 }) => {
   return (
     <div className="relative">
       <div 
         className="absolute inset-0 bg-black/50 z-0"
-        style={backgroundImage ? { backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+        style={{ 
+          backgroundImage: `url(${backgroundImage})`, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center' 
+        }}
       />
       <div 
         className="relative z-10 bg-gradient-to-r from-black/60 to-transparent py-16 md:py-24"
@@ -59,4 +63,3 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
-
