@@ -22,7 +22,8 @@ const Index: React.FC = () => {
           <Wrench className="w-7 h-7" />
         </ServiceIcon>
       ),
-      link: "/servicos#hidraulico"
+      link: "/servicos#hidraulico",
+      imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg"
     },
     {
       title: "Desentupimento",
