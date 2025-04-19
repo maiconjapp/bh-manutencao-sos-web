@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -11,7 +10,7 @@ const Services: React.FC = () => {
       id: "hidraulico",
       title: "Encanador 24h",
       icon: <Wrench className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
+      imageUrl: "https://images.unsplash.com/photo-1620455687842-0f5a1dedb42a",
       services: [
         "Conserto de vazamentos",
         "Troca de torneiras e registros",
@@ -26,7 +25,7 @@ const Services: React.FC = () => {
       id: "desentupimento",
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1504893524553-b855bce32c67",
+      imageUrl: "https://images.unsplash.com/photo-1580130544977-624d0e30b923",
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
@@ -41,7 +40,7 @@ const Services: React.FC = () => {
       id: "eletricos",
       title: "Serviços Elétricos",
       icon: <Bolt className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      imageUrl: "https://images.unsplash.com/photo-1546622612-19e6b31d9eef",
       services: [
         "Instalação de chuveiros",
         "Troca de disjuntores",
@@ -56,7 +55,7 @@ const Services: React.FC = () => {
       id: "instalacoes",
       title: "Instalações e Montagens",
       icon: <Plug className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
+      imageUrl: "https://images.unsplash.com/photo-1593786452623-089fcd2062b9",
       services: [
         "Fixação de cuba e pia",
         "Instalação de suporte para TV",
