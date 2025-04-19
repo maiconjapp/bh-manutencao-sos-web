@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -12,68 +13,69 @@ const ServiceIcon: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </div>
 );
 
+// Corrigir URLs de imagem - removendo caracteres extras que podem estar causando problemas
+const services = [
+  {
+    title: "Conserto Hidráulico",
+    description: "Vazamentos, torneiras, canos, válvulas e todos os tipos de reparos hidráulicos com atendimento rápido.",
+    icon: (
+      <ServiceIcon>
+        <Wrench className="w-7 h-7" />
+      </ServiceIcon>
+    ),
+    link: "/servicos#hidraulico",
+    imageUrl: "https://i.ibb.co/1YnM1GV/IMG-7003-2.jpg"
+  },
+  {
+    title: "Desentupimento",
+    description: "Desentupimento de pias, vasos sanitários, ralos, caixas de gordura e tubulações com equipamento especializado.",
+    icon: (
+      <ServiceIcon>
+        <ShowerHead className="w-7 h-7" />
+      </ServiceIcon>
+    ),
+    link: "/servicos#desentupimento",
+    imageUrl: "https://i.ibb.co/Z6BVJCJ/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
+  },
+  {
+    title: "Serviços Elétricos",
+    description: "Instalação e reparo de tomadas, interruptores, disjuntores, chuveiros e fiação elétrica.",
+    icon: (
+      <ServiceIcon>
+        <Bolt className="w-7 h-7" />
+      </ServiceIcon>
+    ),
+    link: "/servicos#eletricos",
+    imageUrl: "https://i.ibb.co/RrB4Pwc/IMG-6990.jpg"
+  },
+  {
+    title: "Instalações",
+    description: "Instalação de ventiladores, suportes de TV, cuba de banheiro, painel de LED e muito mais.",
+    icon: (
+      <ServiceIcon>
+        <Plug className="w-7 h-7" />
+      </ServiceIcon>
+    ),
+    link: "/servicos#instalacoes"
+  }
+];
+
+const benefits = [
+  {
+    title: "Atendimento 24h",
+    description: "Estamos disponíveis 24 horas por dia, 7 dias por semana, inclusive feriados."
+  },
+  {
+    title: "Preço Justo",
+    description: "Orçamento transparente, sem surpresas. Você sabe exatamente quanto vai pagar."
+  },
+  {
+    title: "Profissionais Qualificados",
+    description: "Nossa equipe é formada por profissionais experientes e qualificados."
+  }
+];
+
 const Index: React.FC = () => {
-  const services = [
-    {
-      title: "Conserto Hidráulico",
-      description: "Vazamentos, torneiras, canos, válvulas e todos os tipos de reparos hidráulicos com atendimento rápido.",
-      icon: (
-        <ServiceIcon>
-          <Wrench className="w-7 h-7" />
-        </ServiceIcon>
-      ),
-      link: "/servicos#hidraulico",
-      imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg"
-    },
-    {
-      title: "Desentupimento",
-      description: "Desentupimento de pias, vasos sanitários, ralos, caixas de gordura e tubulações com equipamento especializado.",
-      icon: (
-        <ServiceIcon>
-          <ShowerHead className="w-7 h-7" />
-        </ServiceIcon>
-      ),
-      link: "/servicos#desentupimento",
-      imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
-    },
-    {
-      title: "Serviços Elétricos",
-      description: "Instalação e reparo de tomadas, interruptores, disjuntores, chuveiros e fiação elétrica.",
-      icon: (
-        <ServiceIcon>
-          <Bolt className="w-7 h-7" />
-        </ServiceIcon>
-      ),
-      link: "/servicos#eletricos",
-      imageUrl: "https://i.ibb.co/RrB4Pwc/IMG-6990.jpg"
-    },
-    {
-      title: "Instalações",
-      description: "Instalação de ventiladores, suportes de TV, cuba de banheiro, painel de LED e muito mais.",
-      icon: (
-        <ServiceIcon>
-          <Plug className="w-7 h-7" />
-        </ServiceIcon>
-      ),
-      link: "/servicos#instalacoes"
-    }
-  ];
-
-  const benefits = [
-    {
-      title: "Atendimento 24h",
-      description: "Estamos disponíveis 24 horas por dia, 7 dias por semana, inclusive feriados."
-    },
-    {
-      title: "Preço Justo",
-      description: "Orçamento transparente, sem surpresas. Você sabe exatamente quanto vai pagar."
-    },
-    {
-      title: "Profissionais Qualificados",
-      description: "Nossa equipe é formada por profissionais experientes e qualificados."
-    }
-  ];
-
   return (
     <Layout>
       <HeroSection
