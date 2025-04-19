@@ -30,6 +30,9 @@ const Services: React.FC = () => {
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
       imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg",
+      additionalImages: [
+        "https://i.ibb.co/zhXr5w5p/quot-Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
+      ],
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
