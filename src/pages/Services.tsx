@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -13,6 +12,9 @@ const Services: React.FC = () => {
       title: "Encanador 24h",
       icon: <Wrench className="w-12 h-12 text-secondary" />,
       imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg",
+      additionalImages: [
+        "https://i.ibb.co/35sv2mXh/Profissional-da-S-O-S-Manuten-es-BH-desentupindo-pia-de-cozinha-em-uma-resid-ncia-de-Belo-Horizonte.jpg"
+      ],
       services: [
         "Conserto de vazamentos",
         "Troca de torneiras e registros",
@@ -101,6 +103,24 @@ const Services: React.FC = () => {
                         />
                       </div>
                     )}
+                    
+                    {category.additionalImages && category.additionalImages.length > 0 && (
+                      <div className="w-full md:w-1/3 grid grid-cols-1 gap-4">
+                        {category.additionalImages.map((img, index) => (
+                          <div key={index} className="h-32 rounded-lg overflow-hidden shadow-lg">
+                            <OptimizedImage 
+                              src={img} 
+                              alt={`${category.title} additional image ${index + 1}`}
+                              width={300}
+                              height={200}
+                              aspectRatio={3/2}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    
                     <div className="md:w-2/3">
                       <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
                       <p className="text-gray-700 mb-6">{category.description}</p>
