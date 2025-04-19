@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -25,7 +26,7 @@ const Services: React.FC = () => {
       id: "desentupimento",
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1580130544977-624d0e30b923",
+      imageUrl: "https://i.ibb.co/v6TfXJDH/IMG-7008.jpg",
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
