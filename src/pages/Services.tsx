@@ -56,7 +56,7 @@ const Services: React.FC = () => {
       id: "instalacoes",
       title: "Instalações e Montagens",
       icon: <Plug className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://i.ibb.co/QFkfQrBm/IMG-3279.jpg",
+      imageUrl: "https://i.ibb.co/rfdBW7kN/IMG-6993.jpg",
       services: [
         "Fixação de cuba e pia",
         "Instalação de suporte para TV",
