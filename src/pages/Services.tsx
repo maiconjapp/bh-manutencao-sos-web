@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -11,7 +10,7 @@ const Services: React.FC = () => {
       id: "hidraulico",
       title: "Encanador 24h",
       icon: <Wrench className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1620455687842-0f5a1dedb42a",
+      imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg",
       services: [
         "Conserto de vazamentos",
         "Troca de torneiras e registros",
