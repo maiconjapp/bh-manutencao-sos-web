@@ -40,7 +40,7 @@ const Services: React.FC = () => {
       id: "eletricos",
       title: "Serviços Elétricos",
       icon: <Bolt className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://i.ibb.co/NzndpZS/Servi-os-de-eletricista-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-B.jpg",
+      imageUrl: "https://i.ibb.co/WnLNF4H/servico-eletrico-residencial.jpg",
       services: [
         "Instalação de chuveiros",
         "Troca de disjuntores",
