@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -25,7 +26,7 @@ const Services: React.FC = () => {
       id: "desentupimento",
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://i.ibb.co/v6TfXJDH/IMG-7008.jpg",
+      imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg",
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
@@ -295,3 +296,4 @@ const Services: React.FC = () => {
 };
 
 export default Services;
+
