@@ -1,0 +1,56 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>S.O.S Manutenções Residenciais - Belo Horizonte</name>
+    <description>Serviços de encanador, eletricista e desentupidora em Belo Horizonte</description>
+    <Placemark>
+      <name>S.O.S Manutenções Residenciais - Marido de Aluguel BH</name>
+      <description>
+        <![CDATA[
+        <p>R. Ipê Mirim, 550 - Etelvina Carneiro, Belo Horizonte - MG, 31746-110</p>
+        <p>Telefone: (31) 98731-6012</p>
+        <p>Atendimento 24h</p>
+        <p><a href="https://sosmanutencoesresidenciais-maridodealuguel.com">Website</a></p>
+        ]]>
+      </description>
+      <Point>
+        <coordinates>-43.9542,-19.8157,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Área de Atendimento - Pampulha</name>
+      <description>Área de atendimento na região da Pampulha</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -43.9742,-19.8057,0
+              -43.9742,-19.8257,0
+              -43.9342,-19.8257,0
+              -43.9342,-19.8057,0
+              -43.9742,-19.8057,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Área de Atendimento - Zona Norte</name>
+      <description>Área de atendimento na Zona Norte de Belo Horizonte</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -43.9842,-19.7957,0
+              -43.9842,-19.8357,0
+              -43.9242,-19.8357,0
+              -43.9242,-19.7957,0
+              -43.9842,-19.7957,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+</kml>
