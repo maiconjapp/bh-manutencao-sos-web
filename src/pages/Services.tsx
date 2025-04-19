@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -11,6 +10,7 @@ const Services: React.FC = () => {
       id: "hidraulico",
       title: "Encanador 24h",
       icon: <Wrench className="w-12 h-12 text-secondary" />,
+      imageUrl: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
       services: [
         "Conserto de vazamentos",
         "Troca de torneiras e registros",
@@ -25,6 +25,7 @@ const Services: React.FC = () => {
       id: "desentupimento",
       title: "Desentupidora Residencial",
       icon: <ShowerHead className="w-12 h-12 text-secondary" />,
+      imageUrl: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
       services: [
         "Desentupimento de pias e ralos",
         "Desentupimento de vasos sanitários",
@@ -39,6 +40,7 @@ const Services: React.FC = () => {
       id: "eletricos",
       title: "Serviços Elétricos",
       icon: <Bolt className="w-12 h-12 text-secondary" />,
+      imageUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475",
       services: [
         "Instalação de chuveiros",
         "Troca de disjuntores",
@@ -53,6 +55,7 @@ const Services: React.FC = () => {
       id: "instalacoes",
       title: "Instalações e Montagens",
       icon: <Plug className="w-12 h-12 text-secondary" />,
+      imageUrl: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
       services: [
         "Fixação de cuba e pia",
         "Instalação de suporte para TV",
@@ -72,6 +75,7 @@ const Services: React.FC = () => {
         subtitle="Soluções completas para reparos e manutenções em sua casa, com atendimento rápido e qualidade garantida"
         ctaText="Solicitar Orçamento"
         ctaLink="https://wa.me/5531987316012?text=Olá!%20Quero%20um%20orçamento%20para%20serviços.%20Vim%20pela%20página%20de%20Serviços."
+        backgroundImage="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
       />
       
       <section className="py-16 bg-white">
@@ -83,8 +87,16 @@ const Services: React.FC = () => {
               {serviceCategories.map((category) => (
                 <div key={category.id} id={category.id} className="scroll-mt-24">
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6">
-                    <div className="shrink-0">{category.icon}</div>
-                    <div>
+                    {category.imageUrl && (
+                      <div className="w-full md:w-1/3 h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img 
+                          src={category.imageUrl} 
+                          alt={category.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="md:w-2/3">
                       <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
                       <p className="text-gray-700 mb-6">{category.description}</p>
                       
@@ -136,7 +148,6 @@ const Services: React.FC = () => {
                     </div>
                   </div>
                   
-                  {/* Add a separator except for the last item */}
                   {serviceCategories.indexOf(category) !== serviceCategories.length - 1 && (
                     <hr className="border-gray-200 mt-8" />
                   )}
