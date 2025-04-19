@@ -18,16 +18,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <div className="relative">
+      {/* Background image with darker overlay */}
       <div 
-        className="absolute inset-0 bg-black/50 z-0"
+        className="absolute inset-0 bg-black/70 z-0"
         style={{ 
-          backgroundImage: `url(${backgroundImage})`, 
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`, 
           backgroundSize: 'cover', 
           backgroundPosition: 'center' 
         }}
       />
       <div 
-        className="relative z-10 bg-gradient-to-r from-black/60 to-transparent py-16 md:py-24"
+        className="relative z-10 bg-gradient-to-r from-black/80 to-black/40 py-16 md:py-24"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -63,3 +64,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
+
