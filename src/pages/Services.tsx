@@ -41,7 +41,7 @@ const Services: React.FC = () => {
       id: "eletricos",
       title: "Serviços Elétricos",
       icon: <Bolt className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1546622612-19e6b31d9eef",
+      imageUrl: "https://i.ibb.co/RrB4Pwc/IMG-6990.jpg",
       services: [
         "Instalação de chuveiros",
         "Troca de disjuntores",
