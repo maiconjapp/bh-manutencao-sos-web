@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -76,7 +75,7 @@ const Services: React.FC = () => {
         subtitle="Soluções completas para reparos e manutenções em sua casa, com atendimento rápido e qualidade garantida"
         ctaText="Solicitar Orçamento"
         ctaLink="https://wa.me/5531987316012?text=Olá!%20Quero%20um%20orçamento%20para%20serviços.%20Vim%20pela%20página%20de%20Serviços."
-        backgroundImage="https://i.ibb.co/sp7RMdH6/IMG-6376.jpg"
+        backgroundImage="https://i.ibb.co/QFkfQrBm/IMG-3279.jpg"
       />
       
       <section className="py-16 bg-white">
@@ -170,4 +169,3 @@ const Services: React.FC = () => {
 };
 
 export default Services;
-
