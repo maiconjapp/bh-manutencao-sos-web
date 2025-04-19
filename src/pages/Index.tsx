@@ -44,7 +44,8 @@ const Index: React.FC = () => {
           <Bolt className="w-7 h-7" />
         </ServiceIcon>
       ),
-      link: "/servicos#eletricos"
+      link: "/servicos#eletricos",
+      imageUrl: "https://i.ibb.co/RrB4Pwc/IMG-6990.jpg"
     },
     {
       title: "Instalações",
