@@ -22,7 +22,7 @@ const services = [
       </ServiceIcon>
     ),
     link: "/servicos#hidraulico",
-    imageUrl: "https://i.ibb.co/1YnM1GV/IMG-7003-2.jpg"
+    imageUrl: "https://i.ibb.co/v6TfXJDH/IMG-7008.jpg"
   },
   {
     title: "Desentupimento",
