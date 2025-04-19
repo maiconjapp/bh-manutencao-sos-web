@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -33,7 +32,8 @@ const Index: React.FC = () => {
           <ShowerHead className="w-7 h-7" />
         </ServiceIcon>
       ),
-      link: "/servicos#desentupimento"
+      link: "/servicos#desentupimento",
+      imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg"
     },
     {
       title: "Serviços Elétricos",
@@ -100,6 +100,7 @@ const Index: React.FC = () => {
                 description={service.description}
                 icon={service.icon}
                 link={service.link}
+                imageUrl={service.imageUrl}
               />
             ))}
           </div>
