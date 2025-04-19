@@ -1,8 +1,8 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import ContactForm from '../components/ContactForm';
+import LocationMap from '../components/LocationMap';
 
 const Contact: React.FC = () => {
   return (
@@ -163,6 +163,11 @@ const Contact: React.FC = () => {
                         E outros
                       </li>
                     </ul>
+                  </div>
+                  
+                  <div className="mt-8">
+                    <h3 className="text-lg font-semibold mb-4">Nossa Localização</h3>
+                    <LocationMap />
                   </div>
                 </div>
                 
