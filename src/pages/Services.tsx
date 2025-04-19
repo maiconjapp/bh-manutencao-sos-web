@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -41,7 +40,7 @@ const Services: React.FC = () => {
       id: "eletricos",
       title: "Serviços Elétricos",
       icon: <Bolt className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://i.ibb.co/RrB4Pwc/IMG-6990.jpg",
+      imageUrl: "https://i.ibb.co/NzndpZS/Servi-os-de-eletricista-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-B.jpg",
       services: [
         "Instalação de chuveiros",
         "Troca de disjuntores",
@@ -296,4 +295,3 @@ const Services: React.FC = () => {
 };
 
 export default Services;
-
