@@ -1,7 +1,9 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
+import OptimizedImage from '../components/OptimizedImage';
 import { Bolt, Plug, Wrench, ShowerHead } from 'lucide-react';
 
 const Services: React.FC = () => {
@@ -89,9 +91,12 @@ const Services: React.FC = () => {
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6">
                     {category.imageUrl && (
                       <div className="w-full md:w-1/3 h-64 rounded-lg overflow-hidden shadow-lg">
-                        <img 
+                        <OptimizedImage 
                           src={category.imageUrl} 
                           alt={category.title}
+                          width={400}
+                          height={300}
+                          aspectRatio={4/3}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -273,9 +278,11 @@ const Services: React.FC = () => {
                 </ul>
               </div>
               <div className="md:w-1/2">
-                <img 
+                <OptimizedImage 
                   src="https://i.ibb.co/67nYhLsw/S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-BH.jpg"
                   alt="Materiais disponíveis"
+                  width={480}
+                  height={360}
                   className="rounded-lg shadow-lg"
                 />
               </div>

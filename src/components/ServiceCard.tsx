@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OptimizedImage from './OptimizedImage';
 
 interface ServiceCardProps {
   title: string;
@@ -15,10 +16,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, lin
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {imageUrl && (
         <div className="h-48 w-full overflow-hidden">
-          <img 
+          <OptimizedImage 
             src={imageUrl} 
             alt={title} 
+            aspectRatio={16/9}
             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            width={400}
+            height={225}
           />
         </div>
       )}

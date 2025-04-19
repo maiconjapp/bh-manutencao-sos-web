@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 
 interface HeroSectionProps {
   title: string;
@@ -15,15 +16,39 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   ctaLink,
   backgroundImage = "https://i.ibb.co/jkqdHsnX/Conhe-a-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-BH-Empresa-especializada-em-servi-os-h.jpg"
 }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  
+  useEffect(() => {
+    const img = new Image();
+    img.src = backgroundImage;
+    img.onload = () => setIsImageLoaded(true);
+    
+    // Return immediately if image is in cache
+    if (img.complete) {
+      setIsImageLoaded(true);
+    }
+  }, [backgroundImage]);
+
   return (
     <div className="relative">
+      {/* Low quality placeholder */}
+      <div 
+        className="absolute inset-0 z-0 bg-gray-300"
+        style={{ 
+          filter: "blur(10px)",
+          opacity: isImageLoaded ? 0 : 1,
+          transition: "opacity 0.5s ease-in-out"
+        }}
+      />
+      
       {/* Background image with reduced opacity overlay */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 transition-opacity duration-500"
         style={{ 
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`, 
           backgroundSize: 'cover', 
-          backgroundPosition: 'center' 
+          backgroundPosition: 'center',
+          opacity: isImageLoaded ? 1 : 0
         }}
       />
       <div 

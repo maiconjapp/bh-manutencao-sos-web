@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -81,6 +82,7 @@ const Index: React.FC = () => {
         subtitle="🚨 Atendimento rápido na Pampulha, Zona Norte e região. 📞 Chame agora no WhatsApp (31) 98731-6012"
         ctaText="Chamar no WhatsApp"
         ctaLink="https://wa.me/5531987316012?text=Olá!%20Quero%20um%20orçamento.%20Vim%20pelo%20site."
+        priority={true}
       />
       
       {/* Services Section */}
