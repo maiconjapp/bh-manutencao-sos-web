@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
@@ -55,7 +56,7 @@ const Services: React.FC = () => {
       id: "instalacoes",
       title: "Instalações e Montagens",
       icon: <Plug className="w-12 h-12 text-secondary" />,
-      imageUrl: "https://images.unsplash.com/photo-1593786452623-089fcd2062b9",
+      imageUrl: "https://i.ibb.co/QFkfQrBm/IMG-3279.jpg",
       services: [
         "Fixação de cuba e pia",
         "Instalação de suporte para TV",
