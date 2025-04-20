@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Instagram } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 
 interface LayoutProps {
@@ -50,7 +49,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
         
-        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="container mx-auto px-4 py-2">
@@ -101,6 +99,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <p className="mb-2">Marido de Aluguel BH</p>
               <p className="mb-2">R. Ipê Mirim, 550 - Etelvina Carneiro</p>
               <p>Belo Horizonte - MG, 31746-110</p>
+              <div className="mt-4 flex items-center">
+                <a
+                  href="https://www.instagram.com/sosmanutencoesresid_reserva"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-secondary transition-colors"
+                  aria-label="Siga-nos no Instagram"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+              </div>
             </div>
             
             <div>
