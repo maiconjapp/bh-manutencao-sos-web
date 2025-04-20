@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Instagram } from 'lucide-react';
+import { Menu, X, Instagram, Youtube } from 'lucide-react';
 import WhatsAppButton from './WhatsAppButton';
 
 interface LayoutProps {
@@ -99,7 +99,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <p className="mb-2">Marido de Aluguel BH</p>
               <p className="mb-2">R. Ipê Mirim, 550 - Etelvina Carneiro</p>
               <p>Belo Horizonte - MG, 31746-110</p>
-              <div className="mt-4 flex items-center">
+              <div className="mt-4 flex items-center space-x-4">
                 <a
                   href="https://www.instagram.com/sosmanutencoesresid_reserva"
                   target="_blank"
@@ -108,6 +108,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   aria-label="Siga-nos no Instagram"
                 >
                   <Instagram className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://youtube.com/@sosmanutencoesresidenciaisbh?si=BZQoAgAxhZQTE8Z5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-secondary transition-colors"
+                  aria-label="Nosso Canal no YouTube"
+                >
+                  <Youtube className="w-6 h-6" />
                 </a>
               </div>
             </div>
