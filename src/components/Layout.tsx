@@ -33,6 +33,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Link to="/servicos" className="text-gray-700 hover:text-secondary font-medium">
                 Serviços
               </Link>
+              <Link to="/blog" className="text-gray-700 hover:text-secondary font-medium">
+                Blog
+              </Link>
               <Link to="/contato" className="text-gray-700 hover:text-secondary font-medium">
                 Contato
               </Link>
@@ -73,6 +76,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Serviços
+                </Link>
+                <Link 
+                  to="/blog" 
+                  className="text-gray-700 hover:text-secondary py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link 
                   to="/contato" 

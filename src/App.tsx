@@ -9,6 +9,9 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NeighborhoodPage from "./pages/NeighborhoodPage";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 // Create a new QueryClient instance
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/sobre" element={<About />} />
           <Route path="/servicos" element={<Services />} />
           <Route path="/contato" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/bairros/:neighborhood" element={<NeighborhoodPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
