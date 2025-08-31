@@ -253,6 +253,162 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_posts: {
+        Row: {
+          content: string
+          created_at: string | null
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          is_generated_by_ai: boolean | null
+          meta_description: string | null
+          meta_keywords: string[] | null
+          neighborhood: string | null
+          published_at: string | null
+          seo_score: number | null
+          service_type: string | null
+          slug: string
+          source_keywords: string[] | null
+          status: string | null
+          target_audience: string | null
+          title: string
+          updated_at: string | null
+          views_count: number | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          is_generated_by_ai?: boolean | null
+          meta_description?: string | null
+          meta_keywords?: string[] | null
+          neighborhood?: string | null
+          published_at?: string | null
+          seo_score?: number | null
+          service_type?: string | null
+          slug: string
+          source_keywords?: string[] | null
+          status?: string | null
+          target_audience?: string | null
+          title: string
+          updated_at?: string | null
+          views_count?: number | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          is_generated_by_ai?: boolean | null
+          meta_description?: string | null
+          meta_keywords?: string[] | null
+          neighborhood?: string | null
+          published_at?: string | null
+          seo_score?: number | null
+          service_type?: string | null
+          slug?: string
+          source_keywords?: string[] | null
+          status?: string | null
+          target_audience?: string | null
+          title?: string
+          updated_at?: string | null
+          views_count?: number | null
+        }
+        Relationships: []
+      }
+      content_generator_config: {
+        Row: {
+          auto_publish: boolean | null
+          content_generation_enabled: boolean | null
+          content_template: string | null
+          created_at: string | null
+          daily_post_limit: number | null
+          gemini_api_key_encrypted: string | null
+          id: string
+          min_keyword_volume: number | null
+          seo_focus_enabled: boolean | null
+          target_neighborhoods: string[] | null
+          target_services: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          auto_publish?: boolean | null
+          content_generation_enabled?: boolean | null
+          content_template?: string | null
+          created_at?: string | null
+          daily_post_limit?: number | null
+          gemini_api_key_encrypted?: string | null
+          id?: string
+          min_keyword_volume?: number | null
+          seo_focus_enabled?: boolean | null
+          target_neighborhoods?: string[] | null
+          target_services?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          auto_publish?: boolean | null
+          content_generation_enabled?: boolean | null
+          content_template?: string | null
+          created_at?: string | null
+          daily_post_limit?: number | null
+          gemini_api_key_encrypted?: string | null
+          id?: string
+          min_keyword_volume?: number | null
+          seo_focus_enabled?: boolean | null
+          target_neighborhoods?: string[] | null
+          target_services?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      keyword_analysis: {
+        Row: {
+          competition_score: number | null
+          created_at: string | null
+          difficulty_score: number | null
+          id: string
+          is_active: boolean | null
+          keyword: string
+          last_analyzed: string | null
+          monthly_searches: number | null
+          related_neighborhoods: string[] | null
+          related_services: string[] | null
+          search_volume: number | null
+          trend_score: number | null
+        }
+        Insert: {
+          competition_score?: number | null
+          created_at?: string | null
+          difficulty_score?: number | null
+          id?: string
+          is_active?: boolean | null
+          keyword: string
+          last_analyzed?: string | null
+          monthly_searches?: number | null
+          related_neighborhoods?: string[] | null
+          related_services?: string[] | null
+          search_volume?: number | null
+          trend_score?: number | null
+        }
+        Update: {
+          competition_score?: number | null
+          created_at?: string | null
+          difficulty_score?: number | null
+          id?: string
+          is_active?: boolean | null
+          keyword?: string
+          last_analyzed?: string | null
+          monthly_searches?: number | null
+          related_neighborhoods?: string[] | null
+          related_services?: string[] | null
+          search_volume?: number | null
+          trend_score?: number | null
+        }
+        Relationships: []
+      }
       monitored_posts: {
         Row: {
           article_generated: boolean
@@ -480,6 +636,42 @@ export type Database = {
           sold_count?: number | null
           subcategory?: string | null
           title?: string
+        }
+        Relationships: []
+      }
+      sitemap_urls: {
+        Row: {
+          change_frequency: string | null
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          last_modified: string | null
+          metadata: Json | null
+          priority: number | null
+          url: string
+          url_type: string
+        }
+        Insert: {
+          change_frequency?: string | null
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          last_modified?: string | null
+          metadata?: Json | null
+          priority?: number | null
+          url: string
+          url_type: string
+        }
+        Update: {
+          change_frequency?: string | null
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          last_modified?: string | null
+          metadata?: Json | null
+          priority?: number | null
+          url?: string
+          url_type?: string
         }
         Relationships: []
       }
