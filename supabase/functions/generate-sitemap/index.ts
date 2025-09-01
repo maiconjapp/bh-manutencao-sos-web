@@ -69,7 +69,7 @@ serve(async (req) => {
     }
 
     // Gerar XML do sitemap
-    const baseUrl = 'https://sosmanutencoes.com.br'; // Ajustar para o domínio real
+    const baseUrl = 'https://www.sosmaridodealuguelbh.com.br';
     
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
@@ -108,6 +108,21 @@ serve(async (req) => {
         message: `Sitemap gerado com ${stats.total_urls} URLs`,
         data: stats,
       });
+
+    // Tentar chamar a função de atualização do sitemap estático
+    try {
+      await fetch(`${supabaseUrl}/functions/v1/update-static-sitemap`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${supabaseKey}`,
+        },
+        body: JSON.stringify({ sitemap, stats }),
+      });
+      console.log('Função update-static-sitemap chamada com sucesso');
+    } catch (updateError) {
+      console.error('Erro ao chamar update-static-sitemap:', updateError);
+    }
 
     // Retornar XML ou JSON dependendo do Accept header
     const acceptHeader = req.headers.get('accept') || '';

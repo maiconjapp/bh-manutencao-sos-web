@@ -54,3 +54,9 @@ verify_jwt = false
 
 [functions.content-generator]
 verify_jwt = false
+
+[functions.generate-sitemap]
+verify_jwt = false
+
+[functions.update-static-sitemap]
+verify_jwt = false

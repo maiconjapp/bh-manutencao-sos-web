@@ -161,6 +161,15 @@ serve(async (req) => {
 
     console.log('Automação diária concluída com sucesso')
 
+    // 9. Atualizar sitemap automaticamente
+    console.log('Atualizando sitemap...');
+    try {
+      const { data: sitemapResult } = await supabase.functions.invoke('generate-sitemap');
+      console.log('Sitemap atualizado:', sitemapResult?.stats);
+    } catch (sitemapError) {
+      console.error('Erro ao atualizar sitemap:', sitemapError);
+    }
+
     return new Response(JSON.stringify({
       success: true,
       message: 'Automação diária concluída',
