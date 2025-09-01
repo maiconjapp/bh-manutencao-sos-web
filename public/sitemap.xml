@@ -1,57 +1,158 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/</loc>
-    <lastmod>2023-04-19</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/sobre</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-08-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/servicos</loc>
-    <lastmod>2023-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/contato</loc>
-    <lastmod>2023-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/pampulha</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-08-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/pampulha</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/zona-norte</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/centro</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/savassi</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/funcionarios</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/bairros/barro-preto</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/bairros/ouro-preto</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/bairros/castelo</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/bairros/jaragua</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.sosmaridodealuguelbh.com.br/bairros/aeroporto</loc>
-    <lastmod>2023-04-19</lastmod>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-centro-bh-solucoes-rapidas-e-eficazes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-em-bh-solucoes-rapidas-no-centro</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-em-funcionarios-bh-solucoes-rapidas-e-eficazes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-em-savassi-bh-solucoes-rapidas-e-eficazes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-no-centro-de-bh-solucoes-rapidas-e-eficazes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/desentupimento-zona-norte-bh-solucoes-rapidas-e-eficazes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/eletricista-em-barro-preto-bh-solucoes-rapidas-e-eficientes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/eletricista-em-funcionarios-bh-solucoes-rapidas-e-eficientes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/eletricista-em-pampulha-bh-solucoes-rapidas-e-eficientes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/encanador-centro-bh-solucoes-rapidas-e-eficientes</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.sosmaridodealuguelbh.com.br/blog/encanador-em-barro-preto-bh-solucoes-rapidas-e-eficientes</loc>
+    <lastmod>2025-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
