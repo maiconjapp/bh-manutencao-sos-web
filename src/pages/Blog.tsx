@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, MapPin, Wrench } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -69,18 +70,67 @@ const Blog = () => {
     });
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog SOS Manutenções",
+    "description": "Dicas práticas de manutenção residencial, elétrica, hidráulica e reforma para moradores de Belo Horizonte",
+    "url": "https://www.sosmaridodealuguelbh.com.br/blog",
+    "author": {
+      "@type": "Organization",
+      "name": "SOS Manutenções",
+      "url": "https://www.sosmaridodealuguelbh.com.br"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SOS Manutenções",
+      "url": "https://www.sosmaridodealuguelbh.com.br"
+    },
+    "blogPost": posts.slice(0, 10).map(post => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "url": `https://www.sosmaridodealuguelbh.com.br/blog/${post.slug}`,
+      "datePublished": post.published_at,
+      "author": {
+        "@type": "Organization",
+        "name": "SOS Manutenções"
+      }
+    }))
+  };
+
   return (
     <Layout>
-      {/* SEO Meta Tags */}
-      <title>Blog - Dicas de Manutenção Residencial em BH | SOS Manutenções</title>
-      <meta 
-        name="description" 
-        content="Dicas práticas de manutenção residencial, elétrica, hidráulica e reforma para moradores de Belo Horizonte. Conteúdo especializado por bairro."
-      />
-      <meta 
-        name="keywords" 
-        content="blog manutenção residencial, dicas reforma BH, eletricista belo horizonte, encanador BH, pintura residencial"
-      />
+      <Helmet>
+        <title>Blog - Dicas de Manutenção Residencial em BH | SOS Manutenções</title>
+        <meta 
+          name="description" 
+          content="Dicas práticas de manutenção residencial, elétrica, hidráulica e reforma para moradores de Belo Horizonte. Conteúdo especializado por bairro."
+        />
+        <meta 
+          name="keywords" 
+          content="blog manutenção residencial, dicas reforma BH, eletricista belo horizonte, encanador BH, pintura residencial"
+        />
+        <link rel="canonical" href="https://www.sosmaridodealuguelbh.com.br/blog" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Blog - Dicas de Manutenção Residencial em BH | SOS Manutenções" />
+        <meta property="og:description" content="Dicas práticas de manutenção residencial, elétrica, hidráulica e reforma para moradores de Belo Horizonte." />
+        <meta property="og:url" content="https://www.sosmaridodealuguelbh.com.br/blog" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="SOS Manutenções" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog - Dicas de Manutenção Residencial em BH" />
+        <meta name="twitter:description" content="Dicas práticas de manutenção residencial para moradores de Belo Horizonte." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
 
       <div className="min-h-screen bg-background">
         {/* Header */}
