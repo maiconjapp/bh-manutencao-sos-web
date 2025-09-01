@@ -338,28 +338,35 @@ const Admin = () => {
                   posts.map((post) => (
                     <div 
                       key={post.id} 
-                      className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
+                      className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 p-4 border rounded-lg hover:bg-muted/50 transition-colors"
                     >
-                      <div className="flex-1">
-                        <h3 className="font-semibold mb-1 truncate">{post.title}</h3>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold mb-2 text-base">{post.title}</h3>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap mb-2">
                           <span>Criado: {formatDate(post.created_at)}</span>
+                          <span>•</span>
+                          <span>{post.views_count} views</span>
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap">
                           {post.neighborhood && (
-                            <Badge variant="outline">{post.neighborhood}</Badge>
+                            <Badge variant="outline" className="text-xs">{post.neighborhood}</Badge>
                           )}
                           {post.service_type && (
-                            <Badge variant="secondary">{post.service_type}</Badge>
+                            <Badge variant="secondary" className="text-xs">{post.service_type}</Badge>
                           )}
-                          <span>{post.views_count} visualizações</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Badge variant={getStatusColor(post.status)}>
+                      
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 lg:gap-2">
+                        <Badge 
+                          variant={getStatusColor(post.status)}
+                          className="self-start sm:self-center"
+                        >
                           {post.status === 'published' ? 'Publicado' : 
                            post.status === 'draft' ? 'Rascunho' : 'Arquivado'}
                         </Badge>
                         
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-2">
                           {/* Botão Ver Post (apenas para posts publicados) */}
                           {post.status === 'published' && (
                             <Button 
@@ -367,6 +374,7 @@ const Admin = () => {
                               size="sm"
                               onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
                               title="Ver post no blog"
+                              className="bg-blue-50 hover:bg-blue-100 text-blue-600 border-blue-200"
                             >
                               <ExternalLink className="w-4 h-4" />
                             </Button>
@@ -379,8 +387,8 @@ const Admin = () => {
                               size="sm"
                               onClick={() => publishPost(post.id)}
                               disabled={actionLoading === post.id}
-                              title="Publicar post"
-                              className="text-green-600 hover:text-green-700"
+                              title="👁️ Publicar post"
+                              className="bg-green-50 hover:bg-green-100 text-green-600 border-green-200"
                             >
                               {actionLoading === post.id ? (
                                 <RefreshCw className="w-4 h-4 animate-spin" />
@@ -394,8 +402,8 @@ const Admin = () => {
                               size="sm"
                               onClick={() => unpublishPost(post.id)}
                               disabled={actionLoading === post.id}
-                              title="Despublicar post"
-                              className="text-yellow-600 hover:text-yellow-700"
+                              title="⏸️ Despublicar post"
+                              className="bg-yellow-50 hover:bg-yellow-100 text-yellow-600 border-yellow-200"
                             >
                               {actionLoading === post.id ? (
                                 <RefreshCw className="w-4 h-4 animate-spin" />
@@ -411,8 +419,8 @@ const Admin = () => {
                             size="sm"
                             onClick={() => deletePost(post.id, post.title)}
                             disabled={actionLoading === post.id}
-                            title="Deletar post"
-                            className="text-red-600 hover:text-red-700"
+                            title="🗑️ Deletar post"
+                            className="bg-red-50 hover:bg-red-100 text-red-600 border-red-200"
                           >
                             <Trash2 className="w-4 h-4" />
                           </Button>
