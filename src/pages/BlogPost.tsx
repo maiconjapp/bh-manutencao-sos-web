@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, MapPin, Wrench, ArrowLeft, Share2 } from 'lucide-react';
+import { Calendar, MapPin, Wrench, ArrowLeft, Share2, MessageCircle } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import WhatsAppInlineButton from '@/components/WhatsAppInlineButton';
 
 interface BlogPost {
   id: string;
@@ -268,6 +269,25 @@ const BlogPost = () => {
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
+            {/* Inline WhatsApp Button */}
+            <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-green-100 rounded-lg border border-green-200">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-center sm:text-left">
+                  <h3 className="text-lg font-semibold text-green-800 mb-2">
+                    Precisa de ajuda profissional?
+                  </h3>
+                  <p className="text-green-700">
+                    Fale conosco agora mesmo via WhatsApp e solicite seu orçamento!
+                  </p>
+                </div>
+                <WhatsAppInlineButton 
+                  service={post.service_type}
+                  neighborhood={post.neighborhood}
+                  size="lg"
+                />
+              </div>
+            </div>
+
             {/* Keywords */}
             {post.meta_keywords && post.meta_keywords.length > 0 && (
               <div className="mt-12 pt-8 border-t">
@@ -316,20 +336,31 @@ const BlogPost = () => {
         )}
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
+        <section className="py-16 bg-gradient-to-br from-green-600/90 via-green-700/95 to-green-800/90 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-6">
-                Precisando de ajuda profissional?
+                Precisando de {post.service_type || 'ajuda profissional'}?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Estamos prontos para atender você em {post.neighborhood || 'toda Belo Horizonte'}
+              <p className="text-lg text-green-100 mb-8">
+                Estamos prontos para atender você em {post.neighborhood || 'toda Belo Horizonte'}. 
+                Entre em contato via WhatsApp e receba seu orçamento gratuitamente!
               </p>
-              <Link to="/contato">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Solicitar Orçamento
+              <a
+                href={`https://wa.me/5531987316012?text=${encodeURIComponent(
+                  `Olá! Vi seu artigo sobre ${post.service_type || 'serviços'} em ${post.neighborhood || 'Belo Horizonte'} e gostaria de solicitar um orçamento. Pode me ajudar?`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button 
+                  size="lg" 
+                  className="bg-white text-green-700 hover:bg-green-50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 font-bold"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Falar no WhatsApp Agora
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
