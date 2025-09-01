@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Play, Settings, BarChart3, FileText, RefreshCw } from 'lucide-react';
+import { Plus, Play, Settings, BarChart3, FileText, RefreshCw, Edit, Trash2, Eye, EyeOff, ExternalLink } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -38,6 +38,7 @@ const Admin = () => {
   });
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
     fetchData();
@@ -124,6 +125,76 @@ const Admin = () => {
     } catch (error) {
       console.error('Erro ao gerar sitemap:', error);
       toast.error('Erro ao gerar sitemap');
+    }
+  };
+
+  const publishPost = async (postId: string) => {
+    setActionLoading(postId);
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({ 
+          status: 'published',
+          published_at: new Date().toISOString()
+        })
+        .eq('id', postId);
+
+      if (error) throw error;
+
+      toast.success('Post publicado com sucesso!');
+      fetchData();
+    } catch (error) {
+      console.error('Erro ao publicar post:', error);
+      toast.error('Erro ao publicar post');
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const unpublishPost = async (postId: string) => {
+    setActionLoading(postId);
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({ 
+          status: 'draft',
+          published_at: null
+        })
+        .eq('id', postId);
+
+      if (error) throw error;
+
+      toast.success('Post despublicado com sucesso!');
+      fetchData();
+    } catch (error) {
+      console.error('Erro ao despublicar post:', error);
+      toast.error('Erro ao despublicar post');
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
+  const deletePost = async (postId: string, postTitle: string) => {
+    if (!confirm(`Tem certeza que deseja deletar o post "${postTitle}"? Esta ação não pode ser desfeita.`)) {
+      return;
+    }
+
+    setActionLoading(postId);
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .delete()
+        .eq('id', postId);
+
+      if (error) throw error;
+
+      toast.success('Post deletado com sucesso!');
+      fetchData();
+    } catch (error) {
+      console.error('Erro ao deletar post:', error);
+      toast.error('Erro ao deletar post');
+    } finally {
+      setActionLoading(null);
     }
   };
 
@@ -270,8 +341,8 @@ const Admin = () => {
                       className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
                     >
                       <div className="flex-1">
-                        <h3 className="font-semibold mb-1">{post.title}</h3>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <h3 className="font-semibold mb-1 truncate">{post.title}</h3>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
                           <span>Criado: {formatDate(post.created_at)}</span>
                           {post.neighborhood && (
                             <Badge variant="outline">{post.neighborhood}</Badge>
@@ -287,15 +358,65 @@ const Admin = () => {
                           {post.status === 'published' ? 'Publicado' : 
                            post.status === 'draft' ? 'Rascunho' : 'Arquivado'}
                         </Badge>
-                        {post.status === 'published' && (
+                        
+                        <div className="flex items-center gap-1">
+                          {/* Botão Ver Post (apenas para posts publicados) */}
+                          {post.status === 'published' && (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                              title="Ver post no blog"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                            </Button>
+                          )}
+                          
+                          {/* Botão Publicar/Despublicar */}
+                          {post.status === 'draft' ? (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => publishPost(post.id)}
+                              disabled={actionLoading === post.id}
+                              title="Publicar post"
+                              className="text-green-600 hover:text-green-700"
+                            >
+                              {actionLoading === post.id ? (
+                                <RefreshCw className="w-4 h-4 animate-spin" />
+                              ) : (
+                                <Eye className="w-4 h-4" />
+                              )}
+                            </Button>
+                          ) : (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => unpublishPost(post.id)}
+                              disabled={actionLoading === post.id}
+                              title="Despublicar post"
+                              className="text-yellow-600 hover:text-yellow-700"
+                            >
+                              {actionLoading === post.id ? (
+                                <RefreshCw className="w-4 h-4 animate-spin" />
+                              ) : (
+                                <EyeOff className="w-4 h-4" />
+                              )}
+                            </Button>
+                          )}
+                          
+                          {/* Botão Deletar */}
                           <Button 
                             variant="outline" 
                             size="sm"
-                            onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                            onClick={() => deletePost(post.id, post.title)}
+                            disabled={actionLoading === post.id}
+                            title="Deletar post"
+                            className="text-red-600 hover:text-red-700"
                           >
-                            Ver Post
+                            <Trash2 className="w-4 h-4" />
                           </Button>
-                        )}
+                        </div>
                       </div>
                     </div>
                   ))
