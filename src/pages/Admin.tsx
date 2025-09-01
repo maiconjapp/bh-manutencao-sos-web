@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Play, Settings, BarChart3, FileText, RefreshCw, Edit, Trash2, Eye, EyeOff, ExternalLink } from 'lucide-react';
+import { Plus, Play, Settings, BarChart3, FileText, RefreshCw, Edit, Trash2, Eye, EyeOff, ExternalLink, LogOut } from 'lucide-react';
 import Layout from '@/components/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import AdminLogin from '@/components/AdminLogin';
 
 interface BlogPost {
   id: string;
@@ -39,10 +40,61 @@ const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [user, setUser] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
 
   useEffect(() => {
-    fetchData();
+    checkAuth();
   }, []);
+
+  const checkAuth = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Verificar se é admin
+        const { data: adminData } = await supabase
+          .from('admin_users')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+
+        if (adminData) {
+          setUser(user);
+          setIsAdmin(true);
+          fetchData();
+        } else {
+          setIsAdmin(false);
+        }
+      } else {
+        setIsAdmin(false);
+      }
+    } catch (error) {
+      console.error('Erro ao verificar autenticação:', error);
+      setIsAdmin(false);
+    } finally {
+      setAuthChecking(false);
+    }
+  };
+
+  const handleLoginSuccess = () => {
+    checkAuth();
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setIsAdmin(false);
+    setPosts([]);
+    toast.success('Logout realizado com sucesso!');
+  };
+
+  useEffect(() => {
+    if (isAdmin) {
+      fetchData();
+    }
+  }, [isAdmin]);
 
   const fetchData = async () => {
     try {
@@ -242,6 +294,23 @@ const Admin = () => {
     }
   };
 
+  if (authChecking) {
+    return (
+      <Layout>
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <div className="text-center">
+            <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-4" />
+            <p>Verificando autenticação...</p>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!isAdmin) {
+    return <AdminLogin onLoginSuccess={handleLoginSuccess} />;
+  }
+
   if (loading) {
     return (
       <Layout>
@@ -268,7 +337,14 @@ const Admin = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold">Painel Administrativo</h1>
-            <div className="flex gap-4">
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-muted-foreground">
+                Logado como: {user?.email}
+              </span>
+              <Button onClick={handleLogout} variant="outline" size="sm">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sair
+              </Button>
               <Button onClick={analyzeKeywords} variant="outline">
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Analisar Keywords
@@ -355,16 +431,30 @@ const Admin = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {/* Debug info - remover depois */}
+                {/* Debug info */}
                 <div className="text-xs text-muted-foreground border-l-4 border-blue-500 pl-2 bg-blue-50 p-2 rounded">
-                  Debug: {posts.length} posts carregados | Loading: {loading.toString()}
+                  Debug: {posts.length} posts carregados | Loading: {loading.toString()} | 
+                  <br />Posts existem no DB mas não aparecem = problema de RLS/autenticação
                 </div>
                 
-                {posts.length === 0 ? (
-                  <div className="text-center py-8">
-                    <p className="text-muted-foreground mb-4">
-                      Nenhum post encontrado. Gere seu primeiro conteúdo!
+                {/* Seção de autenticação necessária */}
+                <div className="text-center py-8 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-yellow-800">🔐 Autenticação Necessária</h3>
+                    <p className="text-yellow-700 mt-2">
+                      Para acessar o painel administrativo, você precisa fazer login como administrador.
                     </p>
+                  </div>
+                  
+                  {/* Informação sobre posts existentes */}
+                  <div className="bg-blue-50 border border-blue-200 rounded p-4 mt-4">
+                    <p className="text-blue-800 text-sm">
+                      <strong>ℹ️ Posts encontrados no banco:</strong> 10 posts existem mas não são visíveis devido às políticas de segurança RLS.
+                    </p>
+                  </div>
+
+                  {/* Botão temporário para testar geração */}
+                  <div className="mt-6">
                     <Button 
                       onClick={generateContent} 
                       disabled={generating}
@@ -375,9 +465,13 @@ const Admin = () => {
                       ) : (
                         <Plus className="w-4 h-4 mr-2" />
                       )}
-                      {generating ? 'Gerando...' : 'Gerar Primeiro Post'}
+                      {generating ? 'Gerando...' : 'Tentar Gerar Novo Post'}
                     </Button>
                   </div>
+                </div>
+                
+                {posts.length === 0 ? (
+                  null // Já tratado acima
                 ) : (
                   posts.map((post) => (
                     <div 
