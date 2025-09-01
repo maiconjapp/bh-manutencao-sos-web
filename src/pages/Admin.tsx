@@ -46,39 +46,64 @@ const Admin = () => {
 
   const fetchData = async () => {
     try {
-      // Buscar posts
+      console.log('🔄 Iniciando busca de dados...');
+      
+      // Buscar posts com debug
       const { data: postsData, error: postsError } = await supabase
         .from('blog_posts')
         .select('*')
         .order('created_at', { ascending: false })
         .limit(20);
 
-      if (postsError) throw postsError;
-      setPosts(postsData || []);
+      console.log('📊 Resposta da query posts:', { postsData, postsError });
 
-      // Calcular estatísticas
-      const totalPosts = postsData?.length || 0;
-      const publishedPosts = postsData?.filter(p => p.status === 'published').length || 0;
-      const draftPosts = postsData?.filter(p => p.status === 'draft').length || 0;
-      const totalViews = postsData?.reduce((sum, p) => sum + (p.views_count || 0), 0) || 0;
+      if (postsError) {
+        console.error('❌ Erro na query:', postsError);
+        throw postsError;
+      }
+
+      const posts = postsData || [];
+      console.log(`✅ Posts carregados: ${posts.length}`);
+      console.log('📝 Posts encontrados:', posts.map(p => ({ 
+        id: p.id, 
+        title: p.title, 
+        status: p.status 
+      })));
+      
+      setPosts(posts);
+
+      // Calcular estatísticas com debug
+      const totalPosts = posts.length;
+      const publishedPosts = posts.filter(p => p.status === 'published').length;
+      const draftPosts = posts.filter(p => p.status === 'draft').length;
+      const totalViews = posts.reduce((sum, p) => sum + (p.views_count || 0), 0);
       
       const today = new Date().toISOString().split('T')[0];
-      const postsToday = postsData?.filter(p => 
+      const postsToday = posts.filter(p => 
         p.created_at.split('T')[0] === today
-      ).length || 0;
+      ).length;
 
-      setStats({
+      const newStats = {
         total_posts: totalPosts,
         published_posts: publishedPosts,
         draft_posts: draftPosts,
         total_views: totalViews,
         posts_today: postsToday,
-      });
+      };
+
+      console.log('📈 Estatísticas calculadas:', newStats);
+      setStats(newStats);
 
     } catch (error) {
-      console.error('Erro ao buscar dados:', error);
-      toast.error('Erro ao carregar dados');
+      console.error('💥 Erro completo ao buscar dados:', error);
+      console.error('🔍 Detalhes do erro:', {
+        message: error?.message,
+        code: error?.code,
+        details: error?.details
+      });
+      toast.error(`Erro ao carregar dados: ${error?.message || 'Erro desconhecido'}`);
     } finally {
+      console.log('🏁 Finalizando fetchData, loading = false');
       setLoading(false);
     }
   };
@@ -330,9 +355,28 @@ const Admin = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
+                {/* Debug info - remover depois */}
+                <div className="text-xs text-muted-foreground border-l-4 border-blue-500 pl-2 bg-blue-50 p-2 rounded">
+                  Debug: {posts.length} posts carregados | Loading: {loading.toString()}
+                </div>
+                
                 {posts.length === 0 ? (
-                  <div className="text-center py-8 text-muted-foreground">
-                    Nenhum post encontrado. Gere seu primeiro conteúdo!
+                  <div className="text-center py-8">
+                    <p className="text-muted-foreground mb-4">
+                      Nenhum post encontrado. Gere seu primeiro conteúdo!
+                    </p>
+                    <Button 
+                      onClick={generateContent} 
+                      disabled={generating}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      {generating ? (
+                        <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                      ) : (
+                        <Plus className="w-4 h-4 mr-2" />
+                      )}
+                      {generating ? 'Gerando...' : 'Gerar Primeiro Post'}
+                    </Button>
                   </div>
                 ) : (
                   posts.map((post) => (
