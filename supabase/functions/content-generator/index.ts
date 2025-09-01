@@ -9,9 +9,11 @@ const corsHeaders = {
 
 interface GenerateContentRequest {
   neighborhood?: string;
+  service_type?: string;
   service?: string;
   keywords?: string[];
   manual?: boolean;
+  auto_mode?: boolean;
 }
 
 serve(async (req) => {
@@ -43,10 +45,10 @@ serve(async (req) => {
       });
     }
 
-    const { neighborhood, service, keywords = [], manual = false }: GenerateContentRequest = await req.json();
+    const { neighborhood, service_type, service, keywords = [], manual = false, auto_mode = false }: GenerateContentRequest = await req.json();
 
     // Verificar limite diário se não for manual
-    if (!manual) {
+    if (!manual && !auto_mode) {
       const today = new Date().toISOString().split('T')[0];
       const { count } = await supabase
         .from('blog_posts')
@@ -64,46 +66,104 @@ serve(async (req) => {
 
     // Selecionar bairro e serviço aleatórios se não fornecidos
     const targetNeighborhood = neighborhood || config.target_neighborhoods[Math.floor(Math.random() * config.target_neighborhoods.length)];
-    const targetService = service || config.target_services[Math.floor(Math.random() * config.target_services.length)];
+    const targetService = service_type || service || config.target_services[Math.floor(Math.random() * config.target_services.length)];
+
+    // Analisar concorrentes primeiro
+    console.log('Iniciando análise de concorrentes...')
+    const competitorKeyword = `${targetService} ${targetNeighborhood} Belo Horizonte`
+    
+    let competitorAnalysis = null
+    try {
+      const competitorResponse = await supabase.functions.invoke('competitor-analyzer', {
+        body: { keyword: competitorKeyword }
+      })
+      
+      if (competitorResponse.data?.success) {
+        competitorAnalysis = competitorResponse.data.analysis
+        console.log('Análise de concorrentes concluída:', competitorResponse.data.recommendations)
+      }
+    } catch (error) {
+      console.error('Erro na análise de concorrentes:', error)
+    }
+
+    // Generate content with enhanced prompt based on competitor analysis
+    const targetWordCount = competitorAnalysis?.recommendations?.target_word_count || 2000
+    const uniqueTopics = competitorAnalysis?.recommendations?.unique_topics || [
+      'FAQ - Perguntas Frequentes',
+      'Depoimentos de Clientes', 
+      'Garantia do Serviço',
+      'Orçamento Grátis'
+    ]
 
     // Gerar conteúdo com Gemini
-    const prompt = `
-Você é um especialista em marketing digital e SEO para empresas de manutenção residencial em Belo Horizonte.
+    const prompt = `Você é um especialista em SEO e redação para negócios locais. Crie um artigo SUPERIOR aos concorrentes sobre "${targetService}" em "${targetNeighborhood}, Belo Horizonte".
 
-Crie um artigo completo e otimizado para SEO sobre:
-- Serviço: ${targetService}
-- Bairro: ${targetNeighborhood}
-- Palavras-chave adicionais: ${keywords.join(', ')}
+ANÁLISE DE CONCORRENTES:
+${competitorAnalysis ? `
+- Concorrentes analisados: ${competitorAnalysis.competitors.length}
+- Média de palavras dos concorrentes: ${competitorAnalysis.averageWordCount}
+- META: Criar artigo com ${targetWordCount} palavras (30% maior que concorrentes)
+- Tópicos únicos a incluir: ${uniqueTopics.join(', ')}
+- Gaps de conteúdo identificados: ${competitorAnalysis.contentGaps?.slice(0, 3).join(', ')}
+` : 'Nenhuma análise de concorrentes disponível - criar conteúdo premium padrão'}
 
-ESTRUTURA OBRIGATÓRIA:
-1. Título otimizado (máximo 60 caracteres) incluindo a palavra-chave principal
-2. Meta descrição (150-160 caracteres) atrativa e com call-to-action
-3. Introdução envolvente mencionando o bairro e o problema comum
-4. 3-4 seções principais com subtítulos H2
-5. Lista de dicas práticas
-6. Seção sobre quando contratar um profissional
-7. Conclusão com call-to-action para contato
-8. Keywords para SEO (separadas por vírgula)
+REQUISITOS OBRIGATÓRIOS:
+1. TÍTULO: Título atrativo e único, diferente dos concorrentes
+2. CONTEÚDO: Artigo com ${targetWordCount} palavras, SUPERIOR aos concorrentes
+3. SEO: Use "${targetService} ${targetNeighborhood}" naturalmente (densidade 1-2%)
+4. ESTRUTURA: Use H2, H3 estratégicos (mais que os concorrentes)
+5. LOCAL: Foque em Belo Horizonte com referências específicas
+6. DIFERENCIAÇÃO: Inclua informações que os concorrentes NÃO têm
+7. VALOR ÚNICO: Demonstre expertise superior
+8. CTA FORTE: Multiple calls-to-action para WhatsApp
 
-DIRETRIZES:
-- Mencione o bairro ${targetNeighborhood} especificamente 3-4 vezes
-- Use "Belo Horizonte" ou "BH" pelo menos 2 vezes
-- Foque em problemas reais que moradores enfrentam
-- Inclua dicas úteis e práticas
-- Tom profissional mas acessível
-- Mínimo 800 palavras
-- Inclua chamadas para ação sutis
+TÓPICOS OBRIGATÓRIOS (superar concorrentes):
+- Introdução única sobre ${targetService} em ${targetNeighborhood}
+- Por que somos DIFERENTES dos concorrentes
+- Problemas que OUTROS não resolvem
+- Nossa metodologia EXCLUSIVA
+- Benefícios que só NÓS oferecemos
+- ${uniqueTopics[0] || 'FAQ Completo'}
+- ${uniqueTopics[1] || 'Depoimentos Reais'}
+- ${uniqueTopics[2] || 'Garantia Total'}
+- ${uniqueTopics[3] || 'Orçamento Instantâneo'}
+- Cobertura em ${targetNeighborhood} e região
+- Atendimento 24h diferenciado
+- Certificações e qualificações
+- Antes e depois (casos reais)
+- Preços transparentes e competitivos
+- Conclusão com urgência e exclusividade
+
+DIFERENCIADORES ÚNICOS:
+- Mencione tecnologias/métodos que concorrentes não têm
+- Inclua informações técnicas específicas
+- Use dados locais de ${targetNeighborhood}
+- Crie urgência e escassez
+- Demonstre autoridade no assunto
+
+OTIMIZAÇÃO LOCAL:
+- Mencione pontos de referência em ${targetNeighborhood}
+- Use termos regionais de Belo Horizonte
+- Inclua informações sobre a região
+- Foque em problemas específicos do bairro
+
+IMPORTANTE: 
+- Retorne APENAS JSON válido
+- Conteúdo deve ser MELHOR que qualquer concorrente
+- Use informações específicas e técnicas
+- Crie conexão emocional
+- Inclua proof social (social proof)
 
 FORMATO DE RESPOSTA (JSON):
 {
-  "title": "título do artigo",
-  "meta_description": "meta descrição",
-  "content": "conteúdo completo em HTML",
-  "excerpt": "resumo de 2-3 linhas",
-  "keywords": ["palavra1", "palavra2", "palavra3"]
-}
-
-Gere o conteúdo agora:`;
+  "title": "título ÚNICO e otimizado, diferente dos concorrentes",
+  "content": "conteúdo SUPERIOR com ${targetWordCount} palavras em HTML com tags h2, h3, p, ul, li, strong",
+  "excerpt": "resumo único de 150-160 caracteres",
+  "meta_description": "descrição meta única de 150-160 caracteres",
+  "keywords": ["array", "de", "palavras-chave", "incluindo", "long-tail"],
+  "neighborhood": "${targetNeighborhood}",
+  "service_type": "${targetService}"
+}`
 
     // Chamar API do Gemini
     const geminiResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + geminiApiKey, {
@@ -119,7 +179,7 @@ Gere o conteúdo agora:`;
         }],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 4000,
+          maxOutputTokens: 8000,
         }
       }),
     });
@@ -215,13 +275,17 @@ Gere o conteúdo agora:`;
           service: targetService,
           keywords,
           manual,
+          competitor_analysis_used: !!competitorAnalysis,
+          target_word_count: targetWordCount
         },
       });
 
     return new Response(JSON.stringify({ 
       success: true, 
       post: newPost,
-      message: 'Conteúdo gerado com sucesso'
+      post_id: newPost.id,
+      message: 'Conteúdo gerado com sucesso',
+      competitor_analysis: !!competitorAnalysis
     }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });

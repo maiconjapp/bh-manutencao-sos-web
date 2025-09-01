@@ -214,6 +214,51 @@ export type Database = {
         }
         Relationships: []
       }
+      automation_schedule: {
+        Row: {
+          created_at: string
+          cron_expression: string
+          error_count: number | null
+          execution_count: number | null
+          function_name: string
+          id: string
+          is_active: boolean
+          job_name: string
+          last_executed_at: string | null
+          next_execution_at: string | null
+          success_count: number | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          cron_expression?: string
+          error_count?: number | null
+          execution_count?: number | null
+          function_name: string
+          id?: string
+          is_active?: boolean
+          job_name: string
+          last_executed_at?: string | null
+          next_execution_at?: string | null
+          success_count?: number | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          cron_expression?: string
+          error_count?: number | null
+          execution_count?: number | null
+          function_name?: string
+          id?: string
+          is_active?: boolean
+          job_name?: string
+          last_executed_at?: string | null
+          next_execution_at?: string | null
+          success_count?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       blog_monitors: {
         Row: {
           check_frequency_hours: number
