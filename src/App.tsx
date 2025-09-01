@@ -13,6 +13,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import DynamicSitemap from "./components/DynamicSitemap";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient({
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/bairros/:neighborhood" element={<NeighborhoodPage />} />
+          <Route path="/sitemap.xml" element={<DynamicSitemap />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
