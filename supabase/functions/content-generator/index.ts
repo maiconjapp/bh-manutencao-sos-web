@@ -195,13 +195,41 @@ FORMATO DE RESPOSTA (JSON):
       throw new Error('Conteúdo não gerado');
     }
 
-    // Extrair JSON do conteúdo gerado
-    const jsonMatch = generatedContent.match(/\{[\s\S]*\}/);
+    // Extrair JSON do conteúdo gerado com tratamento robusto
+    let jsonMatch = generatedContent.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
       throw new Error('Formato JSON inválido no conteúdo gerado');
     }
 
-    const contentData = JSON.parse(jsonMatch[0]);
+    // Limpar o JSON removendo caracteres inválidos
+    let jsonString = jsonMatch[0]
+      .replace(/```json/g, '')
+      .replace(/```/g, '')
+      .replace(/\n/g, ' ')
+      .replace(/\r/g, ' ')
+      .trim();
+
+    let contentData;
+    try {
+      contentData = JSON.parse(jsonString);
+    } catch (parseError) {
+      console.error('Erro no parse JSON:', parseError);
+      console.error('JSON problemático:', jsonString.substring(0, 500));
+      
+      // Tentar limpeza mais agressiva
+      const cleanJson = jsonString
+        .replace(/,(\s*[}\]])/g, '$1')  // Remove vírgulas extras
+        .replace(/([{,]\s*)(\w+):/g, '$1"$2":')  // Adiciona aspas nas chaves
+        .replace(/:\s*'([^']*)'/g, ': "$1"')  // Troca aspas simples por duplas
+        .replace(/\\'/g, "'");  // Remove escapes desnecessários
+      
+      try {
+        contentData = JSON.parse(cleanJson);
+      } catch (secondError) {
+        console.error('Falha na segunda tentativa:', secondError);
+        throw new Error(`JSON inválido após limpeza: ${secondError.message}`);
+      }
+    }
 
     // Gerar slug único
     const baseSlug = contentData.title
@@ -226,28 +254,35 @@ FORMATO DE RESPOSTA (JSON):
       counter++;
     }
 
-    // Inserir no banco
+    // Inserir no banco com validação de dados
+    const postData = {
+      title: contentData.title || 'Título Padrão',
+      slug,
+      content: contentData.content || '',
+      excerpt: contentData.excerpt || '',
+      meta_description: contentData.meta_description || '',
+      meta_keywords: Array.isArray(contentData.keywords) ? contentData.keywords : (contentData.meta_keywords || []),
+      neighborhood: targetNeighborhood || null,
+      service_type: targetService || null,
+      source_keywords: Array.isArray(keywords) ? keywords : [],
+      status: config.auto_publish ? 'published' : 'draft',
+      published_at: config.auto_publish ? new Date().toISOString() : null,
+      seo_score: Math.floor(Math.random() * 20) + 80,
+      is_generated_by_ai: true,
+      views_count: 0
+    };
+
+    console.log('Dados do post para inserir:', JSON.stringify(postData, null, 2));
+
     const { data: newPost, error } = await supabase
       .from('blog_posts')
-      .insert({
-        title: contentData.title,
-        slug,
-        content: contentData.content,
-        excerpt: contentData.excerpt,
-        meta_description: contentData.meta_description,
-        meta_keywords: contentData.keywords,
-        neighborhood: targetNeighborhood,
-        service_type: targetService,
-        source_keywords: keywords,
-        status: config.auto_publish ? 'published' : 'draft',
-        published_at: config.auto_publish ? new Date().toISOString() : null,
-        seo_score: Math.floor(Math.random() * 20) + 80, // Score aleatório entre 80-100
-      })
+      .insert(postData)
       .select()
       .single();
 
     if (error) {
-      throw new Error(`Erro ao salvar post: ${error.message}`);
+      console.error('Erro detalhado ao salvar post:', error);
+      throw new Error(`Erro ao salvar post: ${error.message} - Detalhes: ${JSON.stringify(error.details || {})}`);
     }
 
     // Adicionar URL ao sitemap se publicado

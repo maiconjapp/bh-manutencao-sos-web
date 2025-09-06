@@ -63,3 +63,6 @@ verify_jwt = false
 
 [functions.sitemap]
 verify_jwt = false
+
+[functions.scheduler]
+verify_jwt = false
