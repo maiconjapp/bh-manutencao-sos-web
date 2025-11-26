@@ -50,8 +50,13 @@ Deno.serve(async (req) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
     // Add URLs from sitemap_urls table
+    const currentDate = new Date().toISOString().split('T')[0];
+    
     for (const urlData of urls || []) {
-      const lastMod = new Date(urlData.last_modified).toISOString().split('T')[0];
+      // Use current date for dynamic content, original date for static pages
+      const lastMod = urlData.url_type === 'static' 
+        ? new Date(urlData.last_modified).toISOString().split('T')[0]
+        : currentDate;
       
       sitemapXML += `
   <url>
@@ -63,20 +68,23 @@ Deno.serve(async (req) => {
     }
 
     // Add blog posts that might not be in sitemap_urls yet
+    const currentDate = new Date().toISOString().split('T')[0];
+    
     if (blogPosts) {
       for (const post of blogPosts) {
         const blogUrl = `/blog/${post.slug}`;
         const existsInSitemap = urls?.some(url => url.url === blogUrl);
         
         if (!existsInSitemap) {
-          const lastMod = new Date(post.updated_at).toISOString().split('T')[0];
+          // Use current date for blog posts
+          const lastMod = currentDate;
           
           sitemapXML += `
   <url>
     <loc>${baseUrl}${blogUrl}</loc>
     <lastmod>${lastMod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>`;
 
           // Add to sitemap_urls table for future use
@@ -85,9 +93,9 @@ Deno.serve(async (req) => {
             .upsert({
               url: blogUrl,
               url_type: 'blog',
-              priority: 0.7,
-              change_frequency: 'monthly',
-              last_modified: post.updated_at
+              priority: 0.8,
+              change_frequency: 'weekly',
+              last_modified: new Date().toISOString()
             });
         }
       }

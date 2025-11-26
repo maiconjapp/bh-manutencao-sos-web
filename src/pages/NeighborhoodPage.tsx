@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { Bolt, Plug, Wrench, ShowerHead } from 'lucide-react';
 
 // Define neighborhood data for SEO and content
@@ -86,6 +87,11 @@ const NeighborhoodPage: React.FC = () => {
 
   return (
     <Layout>
+      <Breadcrumbs items={[
+        { label: 'Bairros', href: '/bairros' },
+        { label: neighborhoodData.name }
+      ]} />
+      
       <HeroSection
         title={neighborhoodData.title}
         subtitle={`Atendimento 24h com preço justo no bairro ${neighborhoodData.name}. Consertos hidráulicos, elétricos e desentupimentos.`}

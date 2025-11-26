@@ -70,12 +70,16 @@ serve(async (req) => {
 
     // Gerar XML do sitemap
     const baseUrl = 'https://www.sosmaridodealuguelbh.com.br';
+    const currentDate = new Date().toISOString().split('T')[0];
     
     let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
     for (const urlData of urls || []) {
-      const lastMod = new Date(urlData.last_modified).toISOString().split('T')[0];
+      // Use current date for dynamic content, original date for static pages
+      const lastMod = urlData.url_type === 'static' 
+        ? new Date(urlData.last_modified).toISOString().split('T')[0]
+        : currentDate;
       
       sitemap += `
   <url>

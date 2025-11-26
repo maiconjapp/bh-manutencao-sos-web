@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, MapPin, Wrench, ArrowLeft, Share2, MessageCircle } from 'lucide-react';
 import Layout from '@/components/Layout';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
@@ -151,6 +152,11 @@ const BlogPost = () => {
 
   return (
     <Layout>
+      <Breadcrumbs items={[
+        { label: 'Blog', href: '/blog' },
+        { label: post.title }
+      ]} />
+      
       {/* SEO Meta Tags */}
       <title>{post.title} | SOS Manutenções</title>
       <meta name="description" content={post.meta_description || post.excerpt} />

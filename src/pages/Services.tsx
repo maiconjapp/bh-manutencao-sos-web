@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
 import OptimizedImage from '../components/OptimizedImage';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { Bolt, Plug, Wrench, ShowerHead } from 'lucide-react';
 
 const Services: React.FC = () => {
@@ -72,6 +73,8 @@ const Services: React.FC = () => {
 
   return (
     <Layout>
+      <Breadcrumbs items={[{ label: 'Serviços' }]} />
+      
       <HeroSection
         title="Serviços Residenciais em Belo Horizonte"
         subtitle="Soluções completas para reparos e manutenções em sua casa, com atendimento rápido e qualidade garantida"

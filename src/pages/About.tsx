@@ -3,10 +3,13 @@ import React from 'react';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const About: React.FC = () => {
   return (
     <Layout>
+      <Breadcrumbs items={[{ label: 'Sobre' }]} />
+      
       <HeroSection
         title="Sobre a S.O.S Manutenções Residenciais"
         subtitle="Conheça nossa história, valores e compromisso com a qualidade dos serviços"
