@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Calendar, User, MapPin, Wrench } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import Layout from '@/components/Layout';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -101,6 +102,8 @@ const Blog = () => {
 
   return (
     <Layout>
+      <Breadcrumbs items={[{ label: 'Blog' }]} />
+      
       <Helmet>
         <title>Blog - Dicas de Manutenção Residencial em BH | SOS Manutenções</title>
         <meta 

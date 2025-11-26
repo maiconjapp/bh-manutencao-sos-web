@@ -409,6 +409,54 @@ export type Database = {
         }
         Relationships: []
       }
+      homepage_offers: {
+        Row: {
+          button_text: string | null
+          clicks_count: number | null
+          created_at: string
+          description: string | null
+          end_date: string | null
+          featured_image: string | null
+          id: string
+          is_active: boolean | null
+          position_order: number | null
+          product_link: string | null
+          start_date: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          button_text?: string | null
+          clicks_count?: number | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          featured_image?: string | null
+          id?: string
+          is_active?: boolean | null
+          position_order?: number | null
+          product_link?: string | null
+          start_date?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          button_text?: string | null
+          clicks_count?: number | null
+          created_at?: string
+          description?: string | null
+          end_date?: string | null
+          featured_image?: string | null
+          id?: string
+          is_active?: boolean | null
+          position_order?: number | null
+          product_link?: string | null
+          start_date?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       keyword_analysis: {
         Row: {
           competition_score: number | null
@@ -630,6 +678,7 @@ export type Database = {
           shop_name: string | null
           shop_url: string | null
           shopee_id: string
+          slug: string
           sold_count: number | null
           subcategory: string | null
           title: string
@@ -654,6 +703,7 @@ export type Database = {
           shop_name?: string | null
           shop_url?: string | null
           shopee_id: string
+          slug: string
           sold_count?: number | null
           subcategory?: string | null
           title: string
@@ -678,6 +728,7 @@ export type Database = {
           shop_name?: string | null
           shop_url?: string | null
           shopee_id?: string
+          slug?: string
           sold_count?: number | null
           subcategory?: string | null
           title?: string
@@ -764,7 +815,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      generate_slug: { Args: { title: string }; Returns: string }
     }
     Enums: {
       [_ in never]: never

@@ -3,10 +3,13 @@ import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import ContactForm from '../components/ContactForm';
 import LocationMap from '../components/LocationMap';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const Contact: React.FC = () => {
   return (
     <Layout>
+      <Breadcrumbs items={[{ label: 'Contato' }]} />
+      
       <HeroSection
         title="Entre em Contato"
         subtitle="Fale conosco para orçamentos, dúvidas ou agendamento de serviços"
