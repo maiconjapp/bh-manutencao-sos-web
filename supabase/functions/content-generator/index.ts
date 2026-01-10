@@ -166,7 +166,7 @@ FORMATO DE RESPOSTA (JSON):
 }`
 
     // Chamar API do Gemini
-    const geminiResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + geminiApiKey, {
+    const geminiResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + geminiApiKey, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -185,7 +185,9 @@ FORMATO DE RESPOSTA (JSON):
     });
 
     if (!geminiResponse.ok) {
-      throw new Error('Erro na API do Gemini');
+      const errorText = await geminiResponse.text();
+      console.error('Erro Gemini detalhado:', geminiResponse.status, errorText);
+      throw new Error(`Erro na API do Gemini (${geminiResponse.status}): ${errorText.substring(0, 200)}`);
     }
 
     const geminiData = await geminiResponse.json();
