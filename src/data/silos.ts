@@ -22,6 +22,8 @@ export interface SiloData {
   content: string[];
   keywords: string[];
   icon: string;
+  imageUrl: string;
+  imageAlt: string;
   children: SiloChild[];
 }
 
@@ -42,7 +44,7 @@ export const silos: SiloData[] = [
     title: "Marido de Aluguel",
     h1: "Marido de Aluguel em Belo Horizonte – Pequenos Reparos Residenciais",
     metaTitle: "Marido de Aluguel em BH | Reparos Residenciais Profissionais",
-    metaDescription: "Marido de aluguel em Belo Horizonte. Pequenos reparos, instalações e manutenção residencial com atendimento rápido. Ligue agora!",
+    metaDescription: "Marido de aluguel em BH: pequenos reparos, montagem de móveis e instalações. Profissional experiente com atendimento rápido. Orçamento grátis!",
     intro: "Precisa de um marido de aluguel em Belo Horizonte? A S.O.S Manutenções Residenciais resolve desde pequenos reparos até instalações completas na sua casa ou apartamento.",
     content: [
       "Nossa equipe de profissionais qualificados atende toda Belo Horizonte, com destaque para a região da Pampulha e Zona Norte. Realizamos instalações, montagens, trocas e reparos diversos com agilidade e preço justo.",
@@ -51,6 +53,8 @@ export const silos: SiloData[] = [
     ],
     keywords: ["marido de aluguel bh", "marido de aluguel belo horizonte", "pequenos reparos residenciais", "manutenção residencial bh"],
     icon: "Wrench",
+    imageUrl: "https://i.ibb.co/v6TfXJDH/IMG-7008.jpg",
+    imageAlt: "Serviços de marido de aluguel em Belo Horizonte - S.O.S Manutenções Residenciais",
     children: [
       {
         slug: "pampulha",
@@ -124,7 +128,7 @@ export const silos: SiloData[] = [
     title: "Encanador",
     h1: "Encanador em Belo Horizonte – Serviços Hidráulicos Residenciais",
     metaTitle: "Encanador em BH | Serviços Hidráulicos Residenciais",
-    metaDescription: "Encanador em Belo Horizonte para vazamentos, torneiras, registros e instalações hidráulicas. Atendimento rápido. Ligue!",
+    metaDescription: "Encanador em Belo Horizonte: conserto de vazamentos, troca de torneiras e instalações hidráulicas. Atendimento no mesmo dia. Orçamento grátis!",
     intro: "Procurando encanador em Belo Horizonte? A S.O.S Manutenções Residenciais oferece serviços hidráulicos completos com profissionais experientes e atendimento ágil.",
     content: [
       "Atuamos em toda Belo Horizonte com serviços de conserto de vazamentos, troca de torneiras, reparo de descargas, instalação hidráulica e manutenção preventiva. Nossa equipe identifica o problema com precisão e resolve no mesmo dia.",
@@ -133,6 +137,8 @@ export const silos: SiloData[] = [
     ],
     keywords: ["encanador bh", "encanador belo horizonte", "serviços hidráulicos bh", "conserto hidráulico"],
     icon: "Wrench",
+    imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg",
+    imageAlt: "Serviços de encanador em Belo Horizonte - S.O.S Manutenções Residenciais",
     children: [
       {
         slug: "pampulha",
@@ -206,7 +212,7 @@ export const silos: SiloData[] = [
     title: "Eletricista",
     h1: "Eletricista em Belo Horizonte – Serviços Elétricos Residenciais",
     metaTitle: "Eletricista em BH | Serviços Elétricos Residenciais",
-    metaDescription: "Eletricista em Belo Horizonte para tomadas, disjuntores, chuveiros e fiação. Profissional qualificado. Ligue agora!",
+    metaDescription: "Eletricista em Belo Horizonte: instalação de tomadas, troca de disjuntores e chuveiros. Serviço seguro e garantido. Chame no WhatsApp agora!",
     intro: "Precisa de eletricista em Belo Horizonte? A S.O.S Manutenções Residenciais oferece serviços elétricos com segurança, qualidade e atendimento rápido em toda a cidade.",
     content: [
       "Nossa equipe de eletricistas qualificados atende residências e comércios em Belo Horizonte. Realizamos desde a troca de uma tomada até a revisão completa da instalação elétrica do seu imóvel.",
@@ -215,6 +221,8 @@ export const silos: SiloData[] = [
     ],
     keywords: ["eletricista bh", "eletricista belo horizonte", "serviços elétricos bh", "instalação elétrica residencial"],
     icon: "Bolt",
+    imageUrl: "https://i.ibb.co/NzndpZS/Servi-os-de-eletricista-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-B.jpg",
+    imageAlt: "Serviços de eletricista em Belo Horizonte - S.O.S Manutenções Residenciais",
     children: [
       {
         slug: "pampulha",
@@ -288,7 +296,7 @@ export const silos: SiloData[] = [
     title: "Desentupimento",
     h1: "Desentupimento em Belo Horizonte – Ralos, Pias e Vasos",
     metaTitle: "Desentupimento em BH | Ralos, Pias e Vasos Sanitários",
-    metaDescription: "Desentupimento em Belo Horizonte. Ralos, pias, vasos e tubulações com equipamento profissional. Atendimento rápido!",
+    metaDescription: "Desentupimento em Belo Horizonte: ralos, pias e vasos sanitários. Equipamento profissional, sem quebradeira. Atendimento urgente pelo WhatsApp!",
     intro: "Pia entupida, ralo parado ou vaso sanitário transbordando? A S.O.S Manutenções Residenciais resolve desentupimentos em Belo Horizonte com rapidez e equipamento profissional.",
     content: [
       "Atendemos emergências de entupimento em toda BH. Nossa equipe chega preparada com equipamento especializado — molas, furadeiras de desentupimento e máquinas rotativas para casos mais graves.",
@@ -297,6 +305,8 @@ export const silos: SiloData[] = [
     ],
     keywords: ["desentupimento bh", "desentupidora belo horizonte", "desentupir pia bh", "desentupir vaso bh"],
     icon: "ShowerHead",
+    imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg",
+    imageAlt: "Serviços de desentupimento em Belo Horizonte - S.O.S Manutenções Residenciais",
     children: [
       {
         slug: "pampulha",

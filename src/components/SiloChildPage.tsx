@@ -4,6 +4,7 @@ import Layout from './Layout';
 import SEOHead from './SEOHead';
 import HeroSection from './HeroSection';
 import CTASection from './CTASection';
+import OptimizedImage from './OptimizedImage';
 import { WHATSAPP_LINK } from '@/data/silos';
 import type { SiloData, SiloChild } from '@/data/silos';
 
@@ -58,11 +59,21 @@ const SiloChildPage: React.FC<SiloChildPageProps> = ({ silo, child }) => {
       {/* Content */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">{child.title}</h2>
-            {child.content.map((paragraph, i) => (
-              <p key={i} className="text-lg text-muted-foreground mb-6 leading-relaxed">{paragraph}</p>
-            ))}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-2xl font-bold mb-6">{child.title}</h2>
+              {child.content.map((paragraph, i) => (
+                <p key={i} className="text-lg text-muted-foreground mb-6 leading-relaxed">{paragraph}</p>
+              ))}
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg">
+              <OptimizedImage
+                src={silo.imageUrl}
+                alt={silo.imageAlt}
+                aspectRatio={4 / 3}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
