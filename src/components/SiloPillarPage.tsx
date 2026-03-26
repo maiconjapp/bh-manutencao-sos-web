@@ -5,6 +5,7 @@ import SEOHead from './SEOHead';
 import HeroSection from './HeroSection';
 import CTASection from './CTASection';
 import OptimizedImage from './OptimizedImage';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { WHATSAPP_LINK } from '@/data/silos';
 import type { SiloData } from '@/data/silos';
 
@@ -27,6 +28,7 @@ const SiloPillarPage: React.FC<SiloPillarPageProps> = ({ silo }) => {
         keywords={silo.keywords}
         breadcrumbs={breadcrumbs}
         serviceType={silo.title}
+        faq={silo.faq}
       />
 
       <HeroSection
@@ -97,9 +99,34 @@ const SiloPillarPage: React.FC<SiloPillarPageProps> = ({ silo }) => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      {silo.faq && silo.faq.length > 0 && (
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Perguntas frequentes sobre {silo.title}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="w-full">
+                {silo.faq.map((item, i) => (
+                  <AccordionItem key={i} value={`faq-${i}`}>
+                    <AccordionTrigger className="text-left text-lg">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+      )}
+
       <CTASection
-        title="📲 Solicite seu orçamento agora!"
-        description={`Precisa de ${silo.title.toLowerCase()} em Belo Horizonte? Chame no WhatsApp e resolva hoje mesmo!`}
+        title={`📲 Precisa de ${silo.title} em BH?`}
+        description="Chame no WhatsApp agora e resolva hoje mesmo! Orçamento grátis e atendimento rápido."
         buttonText="Chamar no WhatsApp"
         buttonLink={WHATSAPP_LINK}
       />

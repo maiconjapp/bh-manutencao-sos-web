@@ -12,6 +12,11 @@ export interface SiloChild {
   keywords: string[];
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface SiloData {
   slug: string;
   title: string;
@@ -24,6 +29,7 @@ export interface SiloData {
   icon: string;
   imageUrl: string;
   imageAlt: string;
+  faq: FAQItem[];
   children: SiloChild[];
 }
 
@@ -36,6 +42,9 @@ export interface LocalData {
   content: string[];
   highlights: string[];
   keywords: string[];
+  faq: FAQItem[];
+  nearbyLocals: string[];
+  serviceDetails: { service: string; text: string }[];
 }
 
 export const silos: SiloData[] = [
@@ -43,7 +52,7 @@ export const silos: SiloData[] = [
     slug: "marido-de-aluguel",
     title: "Marido de Aluguel",
     h1: "Marido de Aluguel em Belo Horizonte – Pequenos Reparos Residenciais",
-    metaTitle: "Marido de Aluguel em BH | Reparos Residenciais Profissionais",
+    metaTitle: "Marido de Aluguel em BH | Reparos Residenciais 24h",
     metaDescription: "Marido de aluguel em BH: pequenos reparos, montagem de móveis e instalações. Profissional experiente com atendimento rápido. Orçamento grátis!",
     intro: "Precisa de um marido de aluguel em Belo Horizonte? A S.O.S Manutenções Residenciais resolve desde pequenos reparos até instalações completas na sua casa ou apartamento.",
     content: [
@@ -55,6 +64,13 @@ export const silos: SiloData[] = [
     icon: "Wrench",
     imageUrl: "https://i.ibb.co/v6TfXJDH/IMG-7008.jpg",
     imageAlt: "Serviços de marido de aluguel em Belo Horizonte - S.O.S Manutenções Residenciais",
+    faq: [
+      { question: "Quanto custa um marido de aluguel em BH?", answer: "O valor varia conforme o serviço. Pequenos reparos como fixar prateleiras ou trocar fechaduras custam a partir de R$ 80. Solicite orçamento grátis pelo WhatsApp para saber o valor exato do seu serviço." },
+      { question: "Vocês atendem no mesmo dia?", answer: "Sim! Na maioria dos casos conseguimos atender no mesmo dia, especialmente na região da Pampulha e Zona Norte onde estamos localizados." },
+      { question: "O marido de aluguel faz serviço elétrico e hidráulico?", answer: "Fazemos pequenos reparos elétricos e hidráulicos. Para serviços mais complexos, contamos com encanadores e eletricistas especializados na equipe." },
+      { question: "Vocês emitem nota fiscal?", answer: "Sim, emitimos nota fiscal para todos os serviços realizados." },
+      { question: "Qual a garantia dos serviços?", answer: "Oferecemos garantia de 90 dias para todos os serviços de manutenção e instalação realizados." }
+    ],
     children: [
       {
         slug: "pampulha",
@@ -127,8 +143,8 @@ export const silos: SiloData[] = [
     slug: "encanador",
     title: "Encanador",
     h1: "Encanador em Belo Horizonte – Serviços Hidráulicos Residenciais",
-    metaTitle: "Encanador em BH | Serviços Hidráulicos Residenciais",
-    metaDescription: "Encanador em Belo Horizonte: conserto de vazamentos, troca de torneiras e instalações hidráulicas. Atendimento no mesmo dia. Orçamento grátis!",
+    metaTitle: "Encanador em BH | Atendimento no Mesmo Dia – Orçamento Grátis",
+    metaDescription: "Encanador em BH: conserto de vazamentos, troca de torneiras e instalações. Atendimento no mesmo dia. Orçamento grátis pelo WhatsApp!",
     intro: "Procurando encanador em Belo Horizonte? A S.O.S Manutenções Residenciais oferece serviços hidráulicos completos com profissionais experientes e atendimento ágil.",
     content: [
       "Atuamos em toda Belo Horizonte com serviços de conserto de vazamentos, troca de torneiras, reparo de descargas, instalação hidráulica e manutenção preventiva. Nossa equipe identifica o problema com precisão e resolve no mesmo dia.",
@@ -139,6 +155,12 @@ export const silos: SiloData[] = [
     icon: "Wrench",
     imageUrl: "https://i.ibb.co/1YnM1GV2/IMG-7003-2.jpg",
     imageAlt: "Serviços de encanador em Belo Horizonte - S.O.S Manutenções Residenciais",
+    faq: [
+      { question: "Quanto custa chamar um encanador em BH?", answer: "O valor depende do serviço. Troca de torneira simples a partir de R$ 60, conserto de vazamento a partir de R$ 100. Envie fotos pelo WhatsApp para orçamento imediato." },
+      { question: "Vocês atendem emergências de vazamento?", answer: "Sim! Vazamentos são tratados com prioridade. Atendemos no mesmo dia, inclusive aos sábados e domingos." },
+      { question: "Como identificar um vazamento escondido?", answer: "Sinais comuns: conta de água alta sem motivo, manchas de umidade em paredes, mofo no teto ou som de água correndo. Nossa equipe localiza o vazamento sem quebrar desnecessariamente." },
+      { question: "Vocês trabalham com caixa d'água?", answer: "Sim, fazemos instalação, reparo e limpeza de caixa d'água e boias, além de toda a tubulação conectada." }
+    ],
     children: [
       {
         slug: "pampulha",
@@ -158,7 +180,7 @@ export const silos: SiloData[] = [
         title: "Conserto de Vazamentos em BH",
         h1: "Conserto de Vazamentos em Belo Horizonte",
         metaTitle: "Conserto de Vazamentos em BH | Encanador Profissional",
-        metaDescription: "Conserto de vazamentos em BH. Localização e reparo de vazamentos em tubulações, paredes e pisos. Orçamento grátis!",
+        metaDescription: "Conserto de vazamentos em BH. Localização e reparo sem quebradeira. Atendimento urgente. Orçamento grátis pelo WhatsApp!",
         content: [
           "Vazamento de água é sinônimo de prejuízo. Além do desperdício na conta, pode causar infiltrações, mofo e danos estruturais. Em Belo Horizonte, conte com a S.O.S Manutenções para resolver rápido.",
           "Localizamos vazamentos em paredes, pisos, lajes e tubulações com técnicas não destrutivas sempre que possível. Reparamos canos furados, conexões soltas, registros com defeito e sifões danificados.",
@@ -184,7 +206,7 @@ export const silos: SiloData[] = [
         title: "Conserto de Descarga Acoplada",
         h1: "Conserto de Descarga Acoplada em BH",
         metaTitle: "Conserto de Descarga em BH | Caixa Acoplada e Válvula",
-        metaDescription: "Conserto de descarga acoplada em BH. Reparo de caixa acoplada e válvula de descarga. Serviço rápido e garantido!",
+        metaDescription: "Conserto de descarga acoplada em BH. Reparo de caixa acoplada e válvula. Serviço rápido e garantido. WhatsApp!",
         content: [
           "Descarga não para de correr? Caixa acoplada com vazamento? Em Belo Horizonte, resolvemos o problema da sua descarga no mesmo dia com peças de qualidade.",
           "Fazemos reparo e troca de mecanismo interno da caixa acoplada, substituição de válvula de entrada, ajuste de boia e vedação do assento. Trabalhamos com Deca, Celite, Incepa e outras marcas.",
@@ -197,7 +219,7 @@ export const silos: SiloData[] = [
         title: "Instalação Hidráulica Residencial",
         h1: "Instalação Hidráulica Residencial em Belo Horizonte",
         metaTitle: "Instalação Hidráulica em BH | Encanamento Residencial",
-        metaDescription: "Instalação hidráulica residencial em BH. Encanamento para banheiro, cozinha e área de serviço. Solicite orçamento!",
+        metaDescription: "Instalação hidráulica residencial em BH. Encanamento para banheiro, cozinha e área de serviço. Orçamento grátis!",
         content: [
           "Precisa de instalação hidráulica em Belo Horizonte? Nossa equipe projeta e executa toda a tubulação para banheiros, cozinhas, áreas de serviço e áreas externas.",
           "Trabalhamos com tubulação em PVC, CPVC e PEX, seguindo normas técnicas para garantir segurança e durabilidade. Fazemos instalação de ponto de água para máquina de lavar, lava-louça e filtro.",
@@ -211,8 +233,8 @@ export const silos: SiloData[] = [
     slug: "eletricista",
     title: "Eletricista",
     h1: "Eletricista em Belo Horizonte – Serviços Elétricos Residenciais",
-    metaTitle: "Eletricista em BH | Serviços Elétricos Residenciais",
-    metaDescription: "Eletricista em Belo Horizonte: instalação de tomadas, troca de disjuntores e chuveiros. Serviço seguro e garantido. Chame no WhatsApp agora!",
+    metaTitle: "Eletricista em BH | Serviço Seguro e Garantido – 24h",
+    metaDescription: "Eletricista em BH: tomadas, disjuntores, chuveiros e fiação. Serviço seguro com materiais certificados. Chame no WhatsApp agora!",
     intro: "Precisa de eletricista em Belo Horizonte? A S.O.S Manutenções Residenciais oferece serviços elétricos com segurança, qualidade e atendimento rápido em toda a cidade.",
     content: [
       "Nossa equipe de eletricistas qualificados atende residências e comércios em Belo Horizonte. Realizamos desde a troca de uma tomada até a revisão completa da instalação elétrica do seu imóvel.",
@@ -223,6 +245,12 @@ export const silos: SiloData[] = [
     icon: "Bolt",
     imageUrl: "https://i.ibb.co/NzndpZS/Servi-os-de-eletricista-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de-Aluguel-B.jpg",
     imageAlt: "Serviços de eletricista em Belo Horizonte - S.O.S Manutenções Residenciais",
+    faq: [
+      { question: "Quanto custa o serviço de eletricista em BH?", answer: "Troca de tomada ou interruptor a partir de R$ 50. Instalação de chuveiro a partir de R$ 80. Revisão elétrica completa sob orçamento. Envie detalhes pelo WhatsApp." },
+      { question: "Vocês fazem revisão da fiação elétrica?", answer: "Sim! Verificamos toda a instalação, identificamos fios desencapados, sobrecarga e pontos de risco. Ideal para imóveis com mais de 15 anos." },
+      { question: "Quando devo trocar o disjuntor?", answer: "Quando desarma frequentemente, apresenta sinais de queimado, ou quando a carga elétrica do imóvel aumentou (novo ar-condicionado, chuveiro potente, etc.)." },
+      { question: "Vocês instalam ventilador de teto?", answer: "Sim, instalamos ventiladores de teto de todas as marcas, incluindo fiação e suporte adequados para o peso do aparelho." }
+    ],
     children: [
       {
         slug: "pampulha",
@@ -295,8 +323,8 @@ export const silos: SiloData[] = [
     slug: "desentupimento",
     title: "Desentupimento",
     h1: "Desentupimento em Belo Horizonte – Ralos, Pias e Vasos",
-    metaTitle: "Desentupimento em BH | Ralos, Pias e Vasos Sanitários",
-    metaDescription: "Desentupimento em Belo Horizonte: ralos, pias e vasos sanitários. Equipamento profissional, sem quebradeira. Atendimento urgente pelo WhatsApp!",
+    metaTitle: "Desentupimento em BH | Sem Quebradeira – Atendimento Urgente",
+    metaDescription: "Desentupimento em BH: ralos, pias e vasos sanitários. Equipamento profissional, sem quebradeira. Atendimento urgente pelo WhatsApp!",
     intro: "Pia entupida, ralo parado ou vaso sanitário transbordando? A S.O.S Manutenções Residenciais resolve desentupimentos em Belo Horizonte com rapidez e equipamento profissional.",
     content: [
       "Atendemos emergências de entupimento em toda BH. Nossa equipe chega preparada com equipamento especializado — molas, furadeiras de desentupimento e máquinas rotativas para casos mais graves.",
@@ -307,6 +335,13 @@ export const silos: SiloData[] = [
     icon: "ShowerHead",
     imageUrl: "https://i.ibb.co/Z6BVJCJ5/Desentupimento-de-vaso-sanit-rio-em-Belo-Horizonte-com-a-S-O-S-Manuten-es-Residenciais-Marido-de.jpg",
     imageAlt: "Serviços de desentupimento em Belo Horizonte - S.O.S Manutenções Residenciais",
+    faq: [
+      { question: "Quanto custa um desentupimento em BH?", answer: "Desentupimento de ralo ou pia a partir de R$ 80. Vaso sanitário a partir de R$ 100. Tubulação de esgoto sob orçamento. Valores variam conforme a complexidade." },
+      { question: "O desentupimento quebra o piso ou parede?", answer: "Na grande maioria dos casos, não. Usamos molas e máquinas rotativas que desobstruem pela própria tubulação, sem necessidade de quebrar nada." },
+      { question: "Posso usar soda cáustica para desentupir?", answer: "Não recomendamos. Soda cáustica pode danificar tubulações de PVC e causar queimaduras graves. Chame um profissional para resolver com segurança." },
+      { question: "Vocês atendem emergências de entupimento?", answer: "Sim! Entupimento é tratado como urgência. Atendemos no mesmo dia, inclusive finais de semana." },
+      { question: "Como evitar entupimentos recorrentes?", answer: "Use ralo protetor em pias e ralos de box, não descarte gordura na pia, e faça limpeza preventiva das tubulações a cada 6 meses." }
+    ],
     children: [
       {
         slug: "pampulha",
@@ -339,7 +374,7 @@ export const silos: SiloData[] = [
         title: "Desentupimento de Pia",
         h1: "Desentupimento de Pia em Belo Horizonte",
         metaTitle: "Desentupimento de Pia em BH | Cozinha e Banheiro",
-        metaDescription: "Desentupimento de pia em BH. Pia de cozinha e banheiro com equipamento profissional. Resolve na hora! WhatsApp.",
+        metaDescription: "Desentupimento de pia em BH. Cozinha e banheiro com equipamento profissional. Resolve na hora! WhatsApp.",
         content: [
           "Pia entupida na cozinha é um dos problemas mais comuns em residências de Belo Horizonte. Gordura, restos de comida e sabão acumulam no sifão e na tubulação, impedindo o escoamento.",
           "Nossa equipe desentope pias de cozinha e banheiro usando molas e equipamentos profissionais. Desmontamos o sifão quando necessário, limpamos toda a tubulação e verificamos se há obstruções mais profundas.",
@@ -352,7 +387,7 @@ export const silos: SiloData[] = [
         title: "Desentupimento de Vaso Sanitário",
         h1: "Desentupimento de Vaso Sanitário em BH",
         metaTitle: "Desentupimento de Vaso Sanitário em BH | Urgente",
-        metaDescription: "Desentupimento de vaso sanitário em BH. Serviço urgente com equipamento profissional. Sem quebradeira. WhatsApp!",
+        metaDescription: "Desentupimento de vaso em BH. Serviço urgente, sem quebradeira, equipamento profissional. Chame no WhatsApp!",
         content: [
           "Vaso sanitário entupido é emergência. Pode transbordar e causar danos no piso e nos apartamentos vizinhos. Em Belo Horizonte, atendemos com urgência e equipamento especializado.",
           "Usamos bomba de sucção e molas profissionais para desobstruir o vaso sem danificar a louça. Identificamos se o entupimento é no vaso, na coluna de esgoto ou na caixa de inspeção.",
@@ -365,7 +400,7 @@ export const silos: SiloData[] = [
         title: "Limpeza de Tubulação Residencial",
         h1: "Limpeza de Tubulação Residencial em Belo Horizonte",
         metaTitle: "Limpeza de Tubulação em BH | Manutenção Preventiva",
-        metaDescription: "Limpeza de tubulação residencial em BH. Prevenção de entupimentos e mau cheiro. Equipamento profissional!",
+        metaDescription: "Limpeza de tubulação em BH. Prevenção de entupimentos e mau cheiro. Equipamento profissional. Agende agora!",
         content: [
           "A limpeza periódica das tubulações previne entupimentos, mau cheiro e proliferação de insetos. Em Belo Horizonte, fazemos a limpeza completa do sistema de esgoto residencial.",
           "Utilizamos máquina rotativa e hidrojateamento para remover gordura acumulada, resíduos sólidos e incrustações das paredes dos canos. Limpamos caixas de gordura, caixas de inspeção e ralos.",
@@ -381,86 +416,165 @@ export const localPages: LocalData[] = [
   {
     slug: "pampulha",
     name: "Pampulha",
-    h1: "Serviços Residenciais na Pampulha – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais na Pampulha | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais na Pampulha: marido de aluguel, encanador, eletricista e desentupimento. Atendimento rápido!",
+    h1: "Encanador, Eletricista e Marido de Aluguel na Pampulha, BH",
+    metaTitle: "Encanador e Eletricista na Pampulha BH | Atendimento Rápido",
+    metaDescription: "Encanador, eletricista, marido de aluguel e desentupimento na Pampulha BH. Atendimento prioritário, chegada rápida. WhatsApp!",
     content: [
-      "A Pampulha é nossa área de atuação principal. Localizados no bairro Etelvina Carneiro, chegamos rapidamente a qualquer ponto da região — Ouro Preto, Castelo, Jaraguá, São Luiz, Bandeirantes, Itapoã, Santa Amélia e Dona Clara.",
-      "A região da Pampulha possui muitas casas e condomínios de apartamentos que precisam de manutenção constante. Oferecemos todos os nossos serviços com atendimento prioritário para moradores da região.",
-      "Conheça o conjunto arquitetônico da Pampulha projetado por Oscar Niemeyer — patrimônio da UNESCO. E quando precisar de reparos na sua casa, conte com quem está pertinho de você!"
+      "A Pampulha é nossa área de atuação principal. Localizados no bairro Etelvina Carneiro, chegamos em poucos minutos a qualquer ponto da região — Ouro Preto, Castelo, Jaraguá, São Luiz, Bandeirantes, Itapoã, Santa Amélia e Dona Clara.",
+      "A região da Pampulha é conhecida pelo patrimônio arquitetônico de Oscar Niemeyer e pela famosa Lagoa. Mas muitas casas ao redor da orla já têm décadas de construção, com tubulações de ferro galvanizado e fiação antiga que precisam de atenção. Imóveis dos anos 70 e 80 nos bairros Ouro Preto e São Luiz frequentemente apresentam vazamentos ocultos e sobrecarga elétrica.",
+      "Os condomínios mais novos do Castelo e Jaraguá também demandam serviços: montagem de móveis planejados, instalação de suportes de TV, troca de chuveiros elétricos potentes e adequação do quadro de disjuntores para comportar ar-condicionado split."
     ],
-    highlights: ["Atendimento prioritário", "Chegada em minutos", "Conhecemos a região"],
-    keywords: ["serviços residenciais pampulha", "marido de aluguel pampulha", "encanador pampulha", "eletricista pampulha"]
+    highlights: ["Atendimento prioritário — chegada em minutos", "Base na região da Pampulha", "Conhecemos cada bairro da região"],
+    keywords: ["encanador pampulha", "eletricista pampulha", "marido de aluguel pampulha", "desentupimento pampulha", "serviços residenciais pampulha bh"],
+    nearbyLocals: ["castelo", "buritis", "savassi"],
+    serviceDetails: [
+      { service: "Encanador na Pampulha", text: "As casas antigas da Pampulha frequentemente possuem tubulação de ferro galvanizado que corrói com o tempo, causando vazamentos ocultos em paredes e pisos. Nosso encanador identifica e repara esses problemas com agilidade, usando técnicas que minimizam a quebra." },
+      { service: "Eletricista na Pampulha", text: "Muitos imóveis da região foram construídos antes da norma NBR 5410 e possuem fiação subdimensionada. Fazemos revisão completa, troca de fiação antiga por cabos de cobre adequados e adequação do quadro de disjuntores." },
+      { service: "Marido de Aluguel na Pampulha", text: "Instalação de prateleiras, montagem de móveis, troca de fechaduras e pequenos reparos diversos. Por estarmos na Pampulha, chegamos rápido e atendemos no mesmo dia na maioria dos casos." },
+      { service: "Desentupimento na Pampulha", text: "Ralos, pias, vasos sanitários e caixas de gordura. Atendemos emergências de entupimento na Pampulha com prioridade, usando equipamento profissional que resolve sem quebrar piso ou parede." }
+    ],
+    faq: [
+      { question: "Vocês atendem toda a região da Pampulha?", answer: "Sim! Atendemos Ouro Preto, Castelo, Jaraguá, São Luiz, Bandeirantes, Itapoã, Santa Amélia, Dona Clara, Engenho Nogueira e toda a orla da Lagoa da Pampulha." },
+      { question: "Qual o tempo de chegada na Pampulha?", answer: "Por estarmos localizados na região, chegamos em 15 a 30 minutos na maioria dos bairros da Pampulha." },
+      { question: "Atendem aos finais de semana na Pampulha?", answer: "Sim, atendemos sábados, domingos e feriados para emergências como vazamentos e entupimentos." },
+      { question: "Fazem orçamento gratuito na Pampulha?", answer: "Sim! Envie fotos ou descrição do problema pelo WhatsApp e respondemos com orçamento em poucos minutos." },
+      { question: "Vocês atendem condomínios na Pampulha?", answer: "Sim, atendemos casas e apartamentos em condomínios. Respeitamos as regras de acesso e horário de cada edifício." }
+    ]
   },
   {
     slug: "savassi",
     name: "Savassi",
-    h1: "Serviços Residenciais na Savassi – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais na Savassi | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais na Savassi: reparos, hidráulica, elétrica e desentupimento. Profissionais qualificados em BH!",
+    h1: "Encanador, Eletricista e Marido de Aluguel na Savassi, BH",
+    metaTitle: "Encanador e Eletricista na Savassi BH | Profissionais Qualificados",
+    metaDescription: "Encanador, eletricista e marido de aluguel na Savassi BH. Experiência com prédios antigos e modernos. Orçamento grátis!",
     content: [
-      "A Savassi é um dos bairros mais movimentados de Belo Horizonte, com muitos edifícios residenciais e comerciais. Atendemos moradores e comerciantes com serviços de manutenção completos.",
-      "Apartamentos na Savassi frequentemente precisam de reparos hidráulicos, elétricos e instalações diversas. Nossa equipe conhece as particularidades dos prédios antigos e modernos da região.",
-      "Localizada na zona centro-sul de BH, a Savassi é conhecida pela vida cultural vibrante. E quando sua casa precisar de reparos, a S.O.S Manutenções está a uma ligação de distância!"
+      "A Savassi é um dos bairros mais tradicionais e movimentados de Belo Horizonte, com uma mistura única de edifícios residenciais históricos e construções modernas de alto padrão. Atendemos moradores e comerciantes com serviços de manutenção completos.",
+      "Os prédios antigos da Savassi — muitos construídos nas décadas de 50 e 60 — possuem instalações elétricas e hidráulicas que demandam cuidado especial. Fiação de alumínio, tubulação de ferro e quadros elétricos desatualizados são problemas comuns que nossa equipe resolve com experiência e segurança.",
+      "Já os apartamentos modernos da região exigem serviços como instalação de ar-condicionado split, automação de iluminação, adequação elétrica para cooktop de indução e montagem de móveis planejados sob medida."
     ],
-    highlights: ["Experiência com prédios antigos", "Atendimento comercial e residencial", "Equipe qualificada"],
-    keywords: ["serviços residenciais savassi", "marido de aluguel savassi", "encanador savassi"]
+    highlights: ["Experiência com prédios antigos e modernos", "Atendimento residencial e comercial", "Equipe qualificada para alto padrão"],
+    keywords: ["encanador savassi", "eletricista savassi", "marido de aluguel savassi", "serviços residenciais savassi bh"],
+    nearbyLocals: ["sion", "santa-efigenia", "buritis"],
+    serviceDetails: [
+      { service: "Encanador na Savassi", text: "Os prédios antigos da Savassi frequentemente têm tubulações de ferro que causam água avermelhada e vazamentos. Fazemos substituição por tubulação de PVC/CPVC e consertamos vazamentos em apartamentos sem causar transtorno aos vizinhos." },
+      { service: "Eletricista na Savassi", text: "Apartamentos da Savassi com fiação antiga de alumínio precisam de revisão urgente. Fazemos a troca para cobre, adequação do quadro de disjuntores e instalação de pontos para ar-condicionado e equipamentos de alta potência." },
+      { service: "Marido de Aluguel na Savassi", text: "Montagem de móveis planejados, instalação de cortinas e persianas, fixação de quadros e espelhos, e pequenos reparos em apartamentos. Trabalhamos com discrição e respeito às regras do condomínio." },
+      { service: "Desentupimento na Savassi", text: "Desentupimento de ralos, pias e vasos em apartamentos da Savassi. Usamos equipamento que resolve pela tubulação existente, sem necessidade de quebrar pisos ou azulejos." }
+    ],
+    faq: [
+      { question: "Vocês atendem apartamentos comerciais na Savassi?", answer: "Sim! Atendemos tanto imóveis residenciais quanto comerciais na Savassi e região da Zona Sul de BH." },
+      { question: "Têm experiência com prédios antigos?", answer: "Sim, temos ampla experiência com as instalações típicas dos edifícios das décadas de 50 a 70 da Savassi, incluindo tubulação de ferro e fiação de alumínio." },
+      { question: "Conseguem atender no mesmo dia na Savassi?", answer: "Na maioria dos casos sim, especialmente para emergências como vazamentos e problemas elétricos." },
+      { question: "Respeitam as regras do condomínio?", answer: "Sempre. Seguimos horários de obra, usamos proteção em áreas comuns e limpamos tudo após o serviço." }
+    ]
   },
   {
     slug: "buritis",
     name: "Buritis",
-    h1: "Serviços Residenciais no Buritis – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais no Buritis | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais no Buritis: marido de aluguel, encanador, eletricista e desentupimento. Orçamento grátis!",
+    h1: "Encanador, Eletricista e Marido de Aluguel no Buritis, BH",
+    metaTitle: "Encanador e Eletricista no Buritis BH | Orçamento Grátis",
+    metaDescription: "Encanador, eletricista e marido de aluguel no Buritis BH. Experiência com condomínios novos. Atendimento com horário marcado!",
     content: [
-      "O Buritis é um dos bairros que mais crescem em Belo Horizonte, com muitos condomínios novos e empreendimentos residenciais. Atendemos a região com todos os nossos serviços de manutenção.",
-      "Moradores do Buritis confiam na S.O.S Manutenções para instalações em apartamentos novos, reparos hidráulicos, serviços elétricos e montagem de móveis. Atendemos com horário marcado.",
-      "O bairro possui excelente infraestrutura e comércio diversificado. Para manutenção da sua residência, conte com profissionais que conhecem as necessidades dos imóveis da região!"
+      "O Buritis é um dos bairros que mais crescem em Belo Horizonte, com dezenas de condomínios novos e empreendimentos residenciais de médio e alto padrão. Atendemos moradores da região com todos os nossos serviços de manutenção.",
+      "Os apartamentos novos do Buritis, apesar de modernos, frequentemente precisam de serviços como montagem de móveis planejados, instalação de pontos elétricos adicionais para home office, adequação hidráulica para máquina lava e seca e instalação de suportes de TV em parede de drywall.",
+      "O bairro possui infraestrutura completa com shoppings, escolas e comércio diversificado. Para manutenção residencial rápida e de qualidade no Buritis, conte com a S.O.S Manutenções."
     ],
-    highlights: ["Experiência com imóveis novos", "Horário marcado", "Profissionais experientes"],
-    keywords: ["serviços residenciais buritis", "marido de aluguel buritis", "encanador buritis"]
+    highlights: ["Especialistas em condomínios novos", "Atendimento com horário marcado", "Experiência com drywall e infraestrutura moderna"],
+    keywords: ["encanador buritis", "eletricista buritis", "marido de aluguel buritis", "serviços residenciais buritis bh"],
+    nearbyLocals: ["castelo", "savassi", "sion"],
+    serviceDetails: [
+      { service: "Encanador no Buritis", text: "Instalação de pontos de água para máquina lava e seca, conserto de vazamentos em apartamentos novos, troca de torneiras e registros. Trabalhamos com tubulação PPR e PEX usadas nas construções recentes." },
+      { service: "Eletricista no Buritis", text: "Instalação de pontos elétricos para home office, adequação do quadro para ar-condicionado split, instalação de tomadas USB e iluminação em sanca de gesso. Seguimos a norma NBR 5410." },
+      { service: "Marido de Aluguel no Buritis", text: "Montagem de guarda-roupas e móveis planejados, instalação de suportes de TV em drywall (com reforço interno), prateleiras, cortinas e reparos diversos em apartamentos novos." },
+      { service: "Desentupimento no Buritis", text: "Desentupimento de ralos sifonados, pias e vasos sanitários em apartamentos. Limpeza preventiva de caixas de gordura em condomínios." }
+    ],
+    faq: [
+      { question: "Vocês instalam em parede de drywall?", answer: "Sim! Temos experiência com drywall e usamos buchas especiais e reforços internos para fixações seguras de TV, prateleiras e armários." },
+      { question: "Atendem condomínios novos no Buritis?", answer: "Sim, atendemos todos os condomínios do Buritis. Respeitamos as regras de acesso e horário de obra de cada edifício." },
+      { question: "Fazem instalação de ar-condicionado split?", answer: "Fazemos a parte elétrica: ponto dedicado com fiação adequada, disjuntor e tomada. A instalação do aparelho em si recomendamos com técnico certificado em refrigeração." },
+      { question: "Qual o prazo para atendimento no Buritis?", answer: "Geralmente atendemos no mesmo dia ou no dia seguinte. Para emergências, priorizamos o atendimento imediato." }
+    ]
   },
   {
     slug: "castelo",
     name: "Castelo",
-    h1: "Serviços Residenciais no Castelo – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais no Castelo | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais no Castelo BH: reparos, encanador, eletricista e desentupimento. Atendimento rápido!",
+    h1: "Encanador, Eletricista e Marido de Aluguel no Castelo, BH",
+    metaTitle: "Encanador e Eletricista no Castelo BH | Vizinhos de Bairro",
+    metaDescription: "Encanador, eletricista e marido de aluguel no Castelo BH. Atendimento em minutos — somos da região! WhatsApp.",
     content: [
-      "O bairro Castelo, na região da Pampulha, é um dos que mais atendemos. Casas e apartamentos da região contam com nosso serviço ágil de manutenção residencial.",
-      "Por estar próximo da nossa base, o Castelo recebe atendimento prioritário. Realizamos consertos hidráulicos, elétricos, instalações, montagens e desentupimentos com rapidez.",
-      "O Castelo é um bairro predominantemente residencial com ruas tranquilas e boa infraestrutura. Para manter seu imóvel em perfeitas condições, chame a S.O.S Manutenções pelo WhatsApp!"
+      "O bairro Castelo, na região da Pampulha, é um dos que mais atendemos. Por estarmos localizados na vizinhança, conseguimos chegar em poucos minutos para resolver qualquer problema residencial — de um vazamento urgente a uma montagem de móveis.",
+      "O Castelo possui uma mistura de casas mais antigas e condomínios de apartamentos recentes. As casas dos anos 80 e 90 frequentemente precisam de revisão hidráulica e elétrica, com substituição de tubulação de ferro e troca de fiação subdimensionada. Já os apartamentos novos demandam instalações modernas e acabamento fino.",
+      "Bairro predominantemente residencial e familiar, o Castelo valoriza profissionais de confiança que chegam rápido e resolvem sem complicação. É exatamente isso que oferecemos."
     ],
-    highlights: ["Vizinhos de bairro", "Atendimento em minutos", "Preço justo"],
-    keywords: ["serviços residenciais castelo", "marido de aluguel castelo", "encanador castelo bh"]
+    highlights: ["Vizinhos de bairro — chegamos em minutos", "Atendimento para casas e apartamentos", "Preço justo e transparente"],
+    keywords: ["encanador castelo bh", "eletricista castelo bh", "marido de aluguel castelo", "serviços residenciais castelo bh"],
+    nearbyLocals: ["pampulha", "buritis", "savassi"],
+    serviceDetails: [
+      { service: "Encanador no Castelo", text: "Conserto de vazamentos em casas antigas com tubulação de ferro, troca de registros e torneiras, reparo de descargas e instalação hidráulica para reformas de banheiro e cozinha." },
+      { service: "Eletricista no Castelo", text: "Revisão elétrica em casas antigas, troca de disjuntores, instalação de tomadas novas e adequação de fiação para chuveiros potentes e ar-condicionado." },
+      { service: "Marido de Aluguel no Castelo", text: "Montagem de móveis, instalação de prateleiras e suportes, troca de fechaduras e ajuste de portas e janelas. Serviço rápido com chegada em minutos." },
+      { service: "Desentupimento no Castelo", text: "Desentupimento de ralos, pias e vasos com equipamento profissional. Atendemos emergências no Castelo com prioridade por estarmos na região." }
+    ],
+    faq: [
+      { question: "Qual o tempo de chegada no Castelo?", answer: "Por sermos vizinhos de bairro, chegamos em 10 a 20 minutos no Castelo na maioria dos casos." },
+      { question: "Atendem casas e apartamentos no Castelo?", answer: "Sim! Temos experiência tanto com as casas mais antigas quanto com os apartamentos dos condomínios recentes do Castelo." },
+      { question: "Fazem reforma de banheiro no Castelo?", answer: "Fazemos a parte hidráulica e elétrica da reforma: reposição de pontos de água, esgoto, tomadas e iluminação. Para revestimento, indicamos parceiros de confiança." },
+      { question: "O orçamento é gratuito?", answer: "Sim, fazemos orçamento gratuito. Envie fotos e descrição do problema pelo WhatsApp e respondemos rapidamente." }
+    ]
   },
   {
     slug: "santa-efigenia",
     name: "Santa Efigênia",
-    h1: "Serviços Residenciais em Santa Efigênia – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais em Santa Efigênia | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais em Santa Efigênia BH: reparos, hidráulica, elétrica e desentupimento. Ligue agora!",
+    h1: "Encanador, Eletricista e Marido de Aluguel em Santa Efigênia, BH",
+    metaTitle: "Encanador e Eletricista em Santa Efigênia BH | Imóveis Antigos",
+    metaDescription: "Encanador, eletricista e marido de aluguel em Santa Efigênia BH. Especialistas em imóveis antigos. Orçamento grátis!",
     content: [
-      "Santa Efigênia é um bairro tradicional de Belo Horizonte, com muitos edifícios residenciais que necessitam de manutenção constante. A S.O.S Manutenções atende a região com serviços completos.",
-      "Muitos imóveis em Santa Efigênia são antigos e precisam de atenção especial na parte hidráulica e elétrica. Nossa equipe tem experiência com reformas e adequações em construções antigas.",
-      "Próximo ao centro de BH, Santa Efigênia possui localização privilegiada. Para manutenção residencial de qualidade, entre em contato pelo WhatsApp e agende sua visita!"
+      "Santa Efigênia é um dos bairros mais tradicionais de Belo Horizonte, com edifícios residenciais que vão desde construções históricas dos anos 40 até prédios mais recentes. A S.O.S Manutenções atende a região com serviços adaptados às particularidades dos imóveis locais.",
+      "Os edifícios antigos de Santa Efigênia apresentam desafios específicos: tubulações de ferro corroídas que causam vazamentos e água com ferrugem, fiação de alumínio subdimensionada que não suporta os eletrodomésticos atuais, e quadros elétricos desatualizados sem disjuntores modernos.",
+      "Próximo ao centro comercial de BH e ao Hospital Semper, Santa Efigênia possui localização privilegiada e alta demanda por serviços de manutenção. Nossa equipe tem experiência com as adequações necessárias em construções antigas sem comprometer a estrutura original."
     ],
-    highlights: ["Experiência com imóveis antigos", "Reformas e adequações", "Atendimento personalizado"],
-    keywords: ["serviços residenciais santa efigênia", "marido de aluguel santa efigênia", "encanador santa efigênia"]
+    highlights: ["Especialistas em imóveis antigos", "Reformas e adequações elétricas/hidráulicas", "Atendimento personalizado"],
+    keywords: ["encanador santa efigênia", "eletricista santa efigênia", "marido de aluguel santa efigênia", "serviços residenciais santa efigênia bh"],
+    nearbyLocals: ["savassi", "sion", "pampulha"],
+    serviceDetails: [
+      { service: "Encanador em Santa Efigênia", text: "Especialistas em substituição de tubulação antiga de ferro por PVC em edifícios históricos. Consertamos vazamentos sem comprometer a estrutura do imóvel e fazemos adequação hidráulica para reformas." },
+      { service: "Eletricista em Santa Efigênia", text: "Troca de fiação de alumínio por cobre, adequação de quadros elétricos antigos para norma atual, e instalação de aterramento. Fundamental para segurança em prédios das décadas de 40 a 70." },
+      { service: "Marido de Aluguel em Santa Efigênia", text: "Reparos em portas e janelas antigas, troca de fechaduras, instalação de prateleiras e acessórios. Trabalhamos com cuidado para preservar os acabamentos originais dos imóveis." },
+      { service: "Desentupimento em Santa Efigênia", text: "Desentupimento em tubulações antigas que exigem cuidado especial para não danificar canos frágeis. Usamos técnicas adequadas para cada tipo de material." }
+    ],
+    faq: [
+      { question: "Vocês trabalham com prédios muito antigos?", answer: "Sim, temos experiência com edifícios de todas as épocas em Santa Efigênia. Conhecemos as particularidades de tubulações de ferro e fiações antigas." },
+      { question: "A troca de fiação antiga é perigosa?", answer: "Não, desde que feita por profissional qualificado. Desenergizamos o circuito, substituímos a fiação com segurança e testamos tudo antes de religar." },
+      { question: "Conseguem trocar tubulação de ferro por PVC?", answer: "Sim! Fazemos a substituição parcial ou total, conforme a necessidade e viabilidade técnica do imóvel." },
+      { question: "Atendem imóveis comerciais em Santa Efigênia?", answer: "Sim, atendemos residências e estabelecimentos comerciais com serviços de manutenção completos." }
+    ]
   },
   {
     slug: "sion",
     name: "Sion",
-    h1: "Serviços Residenciais no Sion – Marido de Aluguel, Encanador e Eletricista",
-    metaTitle: "Serviços Residenciais no Sion | Marido de Aluguel BH",
-    metaDescription: "Serviços residenciais no Sion BH: marido de aluguel, encanador, eletricista e desentupimento. Orçamento grátis!",
+    h1: "Encanador, Eletricista e Marido de Aluguel no Sion, BH",
+    metaTitle: "Encanador e Eletricista no Sion BH | Alto Padrão",
+    metaDescription: "Encanador, eletricista e marido de aluguel no Sion BH. Atendimento discreto para imóveis de alto padrão. WhatsApp!",
     content: [
-      "O Sion é um bairro nobre de Belo Horizonte com muitos apartamentos de alto padrão. Atendemos moradores da região com serviços de manutenção residencial de qualidade.",
-      "Nossos profissionais conhecem as exigências dos condomínios do Sion — trabalhamos com discrição, limpeza e respeito às normas de cada edifício. Realizamos todos os tipos de reparos e instalações.",
-      "O bairro Sion fica na região centro-sul de BH, próximo ao Mangabeiras. Para manutenção do seu apartamento ou casa, chame a S.O.S Manutenções pelo WhatsApp!"
+      "O Sion é um bairro nobre da zona centro-sul de Belo Horizonte, com edifícios residenciais de alto padrão e casas amplas. Atendemos moradores da região com serviços de manutenção que combinam qualidade técnica com o nível de exigência dos imóveis locais.",
+      "Os apartamentos de alto padrão do Sion possuem sistemas hidráulicos e elétricos mais complexos: pressurizadores de água, aquecedores a gás, quadros elétricos trifásicos, automação residencial e acabamentos premium que exigem cuidado na hora de qualquer reparo.",
+      "Trabalhamos com discrição e respeito às normas rígidas dos condomínios do Sion. Nossa equipe chega uniformizada, usa proteção em áreas comuns e deixa o ambiente limpo após cada serviço."
     ],
-    highlights: ["Atendimento em alto padrão", "Respeito às normas do condomínio", "Profissionais discretos"],
-    keywords: ["serviços residenciais sion", "marido de aluguel sion", "encanador sion bh"]
+    highlights: ["Atendimento para imóveis de alto padrão", "Discrição e respeito ao condomínio", "Profissionais com experiência premium"],
+    keywords: ["encanador sion bh", "eletricista sion bh", "marido de aluguel sion", "serviços residenciais sion bh"],
+    nearbyLocals: ["savassi", "santa-efigenia", "buritis"],
+    serviceDetails: [
+      { service: "Encanador no Sion", text: "Manutenção de sistemas hidráulicos de alto padrão: pressurizadores, aquecedores a gás, misturadores importados e tubulação de cobre. Consertamos com peças originais e acabamento impecável." },
+      { service: "Eletricista no Sion", text: "Instalação e manutenção de sistemas trifásicos, automação residencial, iluminação de design e adequação elétrica para equipamentos de alta potência. Trabalhamos com normas técnicas rigorosas." },
+      { service: "Marido de Aluguel no Sion", text: "Montagem de móveis de alto padrão, instalação de cortinas e persianas motorizadas, fixação de espelhos e quadros de grande porte. Acabamento perfeito em cada detalhe." },
+      { service: "Desentupimento no Sion", text: "Desentupimento com equipamento de alta tecnologia que não danifica pisos de porcelanato e acabamentos premium. Atendemos com discrição e limpeza total." }
+    ],
+    faq: [
+      { question: "Vocês atendem apartamentos de alto padrão?", answer: "Sim, temos experiência com imóveis de alto padrão no Sion. Trabalhamos com cuidado nos acabamentos e usamos materiais compatíveis com o nível do imóvel." },
+      { question: "Trabalham com aquecedores a gás?", answer: "Fazemos a parte hidráulica do aquecedor: conexões de água quente e fria. Para a parte de gás, indicamos profissional certificado." },
+      { question: "Os profissionais vão uniformizados?", answer: "Sim, nossa equipe trabalha uniformizada, usa crachá de identificação e proteção em áreas comuns do condomínio." },
+      { question: "Atendem no Mangabeiras e Serra também?", answer: "Sim! Além do Sion, atendemos Mangabeiras, Serra, Funcionários e toda a região centro-sul de BH." }
+    ]
   }
 ];
 

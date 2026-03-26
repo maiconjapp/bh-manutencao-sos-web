@@ -13,6 +13,7 @@ import BlogPost from "./pages/BlogPost";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import SitemapRoute from "./components/SitemapRoute";
+import BairroRedirect from "./components/BairroRedirect";
 
 // Silo Pages - Marido de Aluguel
 import MaridoDeAluguelPilar from "./pages/silos/MaridoDeAluguelPilar";
@@ -119,6 +120,10 @@ const App = () => (
             <Route path="/atendimento/castelo" element={<CasteloPage />} />
             <Route path="/atendimento/santa-efigenia" element={<SantaEfigeniaPage />} />
             <Route path="/atendimento/sion" element={<SionPage />} />
+
+            {/* Redirects 301 - /bairros/ → /atendimento/ */}
+            <Route path="/bairros/:neighborhood" element={<BairroRedirect />} />
+            <Route path="/bairros" element={<BairroRedirect />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
