@@ -5,7 +5,7 @@ import SEOHead from './SEOHead';
 import HeroSection from './HeroSection';
 import CTASection from './CTASection';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { WHATSAPP_LINK, silos } from '@/data/silos';
+import { WHATSAPP_LINK, silos, localPages } from '@/data/silos';
 import type { LocalData } from '@/data/silos';
 
 interface LocalPageProps {
@@ -153,7 +153,7 @@ const LocalPageComponent: React.FC<LocalPageProps> = ({ local }) => {
             </h2>
             <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
               {local.nearbyLocals.map((slug) => {
-                const nearby = require('@/data/silos').localPages.find((l: LocalData) => l.slug === slug);
+                const nearby = localPages.find((l) => l.slug === slug);
                 return nearby ? (
                   <Link
                     key={slug}
