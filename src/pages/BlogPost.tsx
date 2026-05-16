@@ -185,7 +185,7 @@ const BlogPost = () => {
             "name": "SOS Manutenções",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://sosmanutencoes.com.br/logo.png"
+              "url": "https://www.sosmaridodealuguelbh.com.br/logo.png"
             }
           },
           "datePublished": post.published_at,

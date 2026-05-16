@@ -1,5 +1,5 @@
 export const WHATSAPP_LINK = "https://wa.me/5531987316012?text=Olá!%20Quero%20um%20orçamento.%20Vim%20pelo%20site.";
-export const SITE_URL = "https://encanador-eletricista-belo-horizonte.lovable.app";
+export const SITE_URL = "https://www.sosmaridodealuguelbh.com.br";
 export const PHONE = "(31) 98731-6012";
 
 export interface SiloChild {
