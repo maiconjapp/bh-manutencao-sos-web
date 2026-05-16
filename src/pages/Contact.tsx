@@ -4,10 +4,18 @@ import HeroSection from '../components/HeroSection';
 import ContactForm from '../components/ContactForm';
 import LocationMap from '../components/LocationMap';
 import Breadcrumbs from '../components/Breadcrumbs';
+import SEOHead from '../components/SEOHead';
 
 const Contact: React.FC = () => {
   return (
     <Layout>
+      <SEOHead
+        title="Contato | S.O.S Manutenções Residenciais BH"
+        description="Fale com a S.O.S Manutenções em Belo Horizonte. Orçamentos gratuitos pelo WhatsApp (31) 98731-6012. Atendimento 24h na Pampulha e toda BH."
+        canonical="/contato"
+        keywords={["contato sos manutencoes", "whatsapp marido de aluguel bh", "telefone encanador belo horizonte"]}
+        breadcrumbs={[{ name: 'Início', url: '/' }, { name: 'Contato', url: '/contato' }]}
+      />
       <Breadcrumbs items={[{ label: 'Contato' }]} />
       
       <HeroSection

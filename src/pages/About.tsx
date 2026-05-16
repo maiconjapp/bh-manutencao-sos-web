@@ -4,10 +4,18 @@ import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
 import Breadcrumbs from '../components/Breadcrumbs';
+import SEOHead from '../components/SEOHead';
 
 const About: React.FC = () => {
   return (
     <Layout>
+      <SEOHead
+        title="Sobre a S.O.S Manutenções Residenciais | BH"
+        description="Conheça a S.O.S Manutenções: 10+ anos de experiência em encanador, eletricista e desentupimento em Belo Horizonte. Atendimento 24h na Pampulha e região."
+        canonical="/sobre"
+        keywords={["sobre sos manutencoes", "marido de aluguel bh", "empresa manutencao belo horizonte"]}
+        breadcrumbs={[{ name: 'Início', url: '/' }, { name: 'Sobre', url: '/sobre' }]}
+      />
       <Breadcrumbs items={[{ label: 'Sobre' }]} />
       
       <HeroSection
