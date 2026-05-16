@@ -1,11 +1,26 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import CTASection from '../components/CTASection';
 import OptimizedImage from '../components/OptimizedImage';
 import Breadcrumbs from '../components/Breadcrumbs';
+import SEOHead from '../components/SEOHead';
 import { Bolt, Plug, Wrench, ShowerHead } from 'lucide-react';
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Serviços de Manutenção Residencial",
+  "url": "https://www.sosmaridodealuguelbh.com.br/servicos",
+  "itemListElement": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Encanador 24h", "areaServed": "Belo Horizonte, MG" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desentupidora Residencial", "areaServed": "Belo Horizonte, MG" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Serviços Elétricos", "areaServed": "Belo Horizonte, MG" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalações e Montagens", "areaServed": "Belo Horizonte, MG" } }
+  ]
+};
 
 const Services: React.FC = () => {
   const serviceCategories = [
@@ -73,6 +88,16 @@ const Services: React.FC = () => {
 
   return (
     <Layout>
+      <SEOHead
+        title="Serviços Residenciais em BH | Encanador, Eletricista e Mais"
+        description="Serviços residenciais em Belo Horizonte: encanador, eletricista, desentupimento e instalações. Atendimento rápido na Pampulha. Orçamento grátis pelo WhatsApp!"
+        canonical="/servicos"
+        keywords={["servicos residenciais bh", "encanador belo horizonte", "eletricista bh", "desentupidora bh"]}
+        breadcrumbs={[{ name: 'Início', url: '/' }, { name: 'Serviços', url: '/servicos' }]}
+      />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(servicesSchema)}</script>
+      </Helmet>
       <Breadcrumbs items={[{ label: 'Serviços' }]} />
       
       <HeroSection

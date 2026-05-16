@@ -1,0 +1,57 @@
+# S.O.S Manutenções Residenciais
+
+> Marido de aluguel, encanador, eletricista e desentupimento em Belo Horizonte, com atendimento 24h e foco na região da Pampulha.
+
+A S.O.S Manutenções Residenciais é uma empresa de serviços residenciais sediada em Belo Horizonte (MG). Atende toda a capital, com destaque para Pampulha, Savassi, Buritis, Castelo, Santa Efigênia e Sion. Contato e orçamentos pelo WhatsApp (31) 98731-6012.
+
+## Páginas principais
+
+- [Início](/): Hub central com todos os serviços e áreas de atendimento.
+- [Sobre](/sobre): História, missão e diferenciais da empresa.
+- [Contato](/contato): Formulário, telefone, WhatsApp e localização.
+- [Blog](/blog): Dicas de manutenção residencial e conteúdo por bairro.
+
+## Silo: Marido de Aluguel
+
+- [Marido de Aluguel em BH](/marido-de-aluguel): Pequenos reparos, montagens e instalações residenciais.
+- [Marido de Aluguel na Pampulha](/marido-de-aluguel/pampulha): Atendimento prioritário na região da Pampulha.
+- [Pequenos reparos](/marido-de-aluguel/pequenos-reparos): Consertos diversos pela casa.
+- [Instalação de prateleiras](/marido-de-aluguel/instalacao-prateleiras): Fixação segura em qualquer parede.
+- [Montagem de móveis](/marido-de-aluguel/montagem-moveis): Montagem profissional de móveis novos.
+- [Troca de fechaduras](/marido-de-aluguel/troca-fechaduras): Substituição e instalação de fechaduras.
+
+## Silo: Encanador
+
+- [Encanador em BH](/encanador): Serviços hidráulicos residenciais e comerciais.
+- [Encanador na Pampulha](/encanador/pampulha): Atendimento rápido na região da Pampulha.
+- [Conserto de vazamentos](/encanador/conserto-vazamentos): Detecção e reparo de vazamentos.
+- [Troca de torneiras](/encanador/troca-torneiras): Substituição de torneiras e registros.
+- [Conserto de descarga](/encanador/conserto-descarga): Reparo de válvulas e caixas de descarga.
+- [Instalação hidráulica](/encanador/instalacao-hidraulica): Novas instalações e adequações.
+
+## Silo: Eletricista
+
+- [Eletricista em BH](/eletricista): Serviços elétricos residenciais.
+- [Eletricista na Pampulha](/eletricista/pampulha): Atendimento prioritário na região.
+- [Troca de disjuntores](/eletricista/troca-disjuntores): Substituição segura de disjuntores.
+- [Instalação de tomadas](/eletricista/instalacao-tomadas): Novas tomadas e interruptores.
+- [Instalação de chuveiro](/eletricista/instalacao-chuveiro): Troca e instalação de chuveiros elétricos.
+- [Manutenção elétrica](/eletricista/manutencao-eletrica): Manutenção preventiva e corretiva.
+
+## Silo: Desentupimento
+
+- [Desentupimento em BH](/desentupimento): Desentupidora residencial e comercial.
+- [Desentupimento na Pampulha](/desentupimento/pampulha): Atendimento urgente na região.
+- [Desentupimento de ralo](/desentupimento/ralo): Desobstrução de ralos.
+- [Desentupimento de pia](/desentupimento/pia): Desobstrução de pias de cozinha e banheiro.
+- [Desentupimento de vaso sanitário](/desentupimento/vaso-sanitario): Desobstrução sem quebradeira.
+- [Limpeza de tubulação](/desentupimento/limpeza-tubulacao): Hidrojateamento e limpeza de tubulações.
+
+## Áreas de atendimento
+
+- [Pampulha](/atendimento/pampulha): Atendimento prioritário na região.
+- [Savassi](/atendimento/savassi): Serviços na região centro-sul.
+- [Buritis](/atendimento/buritis): Atendimento na região oeste.
+- [Castelo](/atendimento/castelo): Serviços na região da Pampulha.
+- [Santa Efigênia](/atendimento/santa-efigenia): Atendimento na região leste.
+- [Sion](/atendimento/sion): Serviços na região centro-sul.
